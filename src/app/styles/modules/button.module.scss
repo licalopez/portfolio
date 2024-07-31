@@ -1,0 +1,86 @@
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/transitions' as transition;
+@use '../mixins/button-focus' as btn-focus;
+
+.button {
+	background-color: transparent;
+	border: 1px solid color.$salmon;
+	color: color.$light;
+	cursor: pointer;
+	font-family: font.$wide;
+	font-size: 0.9rem;
+	font-weight: 500;
+	letter-spacing: 0.17rem;
+	outline-color: color.$aqua;
+	overflow: hidden;
+	padding: 1em 2em;
+	position: relative;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: transition.$transition;
+	transition-duration: 200ms;
+	z-index: 2;
+
+	@include screen.atXSmall {
+		font-size: 0.9rem;
+	}
+	@include screen.atSmall {
+		font-size: 1rem;
+		letter-spacing: 0.35rem;
+		padding: 1.3em 2.8em;
+	}
+
+	&:before {
+		background-color: color.$salmon;
+		bottom: -0.63rem;
+		content: '';
+		right: 0;
+		position: absolute;
+		top: -0.63rem;
+		transition: all 300ms ease-out;
+		width: 100%;
+		z-index: -1;
+	}
+
+	&:hover {
+		color: color.$salmon;
+		transition: color 200ms transition.$transition-timing;
+		
+		&:before {
+			transition: transition.$transition;
+			width: 0;
+		}
+	}
+
+	&:focus {
+		@include btn-focus.focus(color.$light, color.$salmon);
+	}
+}
+
+.button-dark {
+	border: 1px solid color.$dark;
+	outline-color: color.$salmon;
+
+	&:before {
+		background-color: color.$dark;
+	}
+
+	&:hover {
+		color: color.$dark;
+		transition: color 300ms transition.$transition-timing;
+	}
+
+	&-outline {
+		color: color.$dark;
+
+		&:before {
+			display: none;
+		}
+	}
+
+	&:focus {
+		@include btn-focus.focus(color.$light, color.$dark);
+	}
+}

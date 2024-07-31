@@ -1,0 +1,5 @@
+@mixin focus($backdrop-color, $btn-color) {
+	box-shadow: 0 0 0 0.1875rem $backdrop-color,
+							0 0 0 0.3125rem $btn-color;
+	outline: none;
+}

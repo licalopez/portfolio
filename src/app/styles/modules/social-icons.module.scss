@@ -1,0 +1,49 @@
+@use '../mixins/button-focus' as btn-focus;
+@use '../variables/colors' as color;
+@use '../mixins/media-queries' as screen;
+@use '../variables/transitions' as transition;
+
+.icons {
+	align-items: center;
+	display: none;
+	list-style: none;
+	top: 50%;
+	z-index: 10;   // check this
+
+	@include screen.atMedium {
+		display: flex;
+	}
+
+	// when menu modal is closed
+	&-default {
+		flex-direction: column;
+		position: fixed;
+		right: 1px;
+		transform: translateY(-50%);
+	}
+}
+
+.icon {
+	margin: 0.63rem 0;
+}
+
+.link {
+	padding: 0.63rem;
+}
+
+.svg {
+	fill: color.$dark;
+	height: 1.3rem;
+	width: 1.3rem;
+
+	// slightly smaller than the rest
+	&-linkedin {
+		height: 1.1rem;
+		width: 1.1rem;
+	}
+
+	&:hover {
+		fill: color.$salmon;
+		transition: transition.$transition;
+	}
+}

@@ -1,0 +1,179 @@
+@use '../variables/colors' as color;
+@use '../mixins/button-focus' as btn-focus;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/sizes' as size;
+@use '../variables/transitions' as transition;
+
+/******************************
+    M E N U  (modal closed)
+/******************************/
+.menu {
+	z-index: 5;
+}
+
+.borders {
+	display: block;
+	height: 100%;
+	position: relative;
+	width: 100%;
+	z-index: 5;
+}
+
+.border {
+	background-color: transparent;
+	display: none;
+	position: fixed;
+
+	@include screen.atMedium {
+		background-color: color.$aqua;
+		display: block;
+	}
+
+	&-left {
+		height: 100%;
+		left: 0;
+		top: 0;
+		width: size.$menu-border-size;
+	}
+
+	&-top {
+		height: size.$menu-border-size;
+		left: 0;
+		top: 0;
+		width: 100%;
+	}
+
+	&-right {
+		height: 100%;
+		right: 0;
+		top: 0;
+		width: size.$menu-border-size;
+	}
+
+	&-bottom {
+		bottom: 0;
+		height: size.$menu-border-size;
+		left: 0;
+		width: 100%;
+	}
+}
+
+/******************************
+           B R A N D
+/******************************/
+.brand {
+	color: color.$dark;
+	font-family: font.$wide;
+	font-size: 0.81rem;
+	font-weight: 600;
+	letter-spacing: 0.05rem;
+	line-height: size.$menu-border-size;
+	margin-right: 5%;
+	opacity: 1;
+	overflow-x: hidden;
+	position: absolute;
+	right: 0%;												// tidies up transition to open modal
+	text-transform: uppercase;
+	// transform: translateX(-50%);   // tidies up transition to open modal
+	transition: all 150ms transition.$transition-timing 200ms;
+	top: 1.88rem;
+	width: auto;
+	z-index: 10;
+
+	@include screen.atMedium {
+		margin-right: size.$menu-border-size;
+		right: 0;
+		// transform: translateX(-50%);  // for 'left' when SocialIcons aren't disabled
+		transform: translateX(0%);
+		position: fixed;
+		top: 0;
+		// width: 100%;									 // for 'left' when SocialIcons aren't disabled
+		width: auto;
+	}
+}
+
+.brand-link {
+	color: inherit;
+	text-decoration: none;
+
+	&:focus-visible {
+		outline: color.$dark solid 0.125rem;;
+	}
+}
+
+/******************************
+  	 M E N U   B U T T O N
+/******************************/
+.menu-icon-button {
+	align-items: center;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	left: 4%;
+	position: fixed;
+	// right: 4%;
+	top: 2.69rem;
+	transform: none;
+	transition: transition.$transition;
+	transition-duration: 300ms;
+	z-index: 10;
+
+	// focus on hamburger icon mode
+	&:focus-visible {
+		@include btn-focus.focus(color.$salmon, color.$light);
+	}
+
+	// focus on aqua border mode
+	@include screen.atMedium {
+		&:focus-visible {
+			@include btn-focus.focus(color.$aqua, color.$dark);
+		}
+	}
+
+	// burger icon background
+	background-color: color.$light;
+	border-radius: 90%;
+	padding: 0.94rem 0.75rem 0.88rem;
+	top: 2.5rem - 0.75rem;
+
+	@include screen.atMedium {
+		background-color: transparent;
+		border-radius: 0;
+		left: 0;
+		padding: 0;
+		right: auto;
+		top: 50%;
+		transform: rotate(-90deg) translate(0, -130%);
+	}
+}
+
+.hamburger-icon {
+	display: flex;
+	flex-wrap: wrap;
+	height: 1.13rem;
+	justify-content: space-between;
+	width: 1.38rem;
+}
+
+.hamburger-line {
+	background-color: color.$dark;
+	height: 0.19rem;
+	transition: transition.$transition;
+	width: 1.38rem;
+}
+
+.menu-text {
+	color: color.$dark;
+	display: none;
+	font-family: font.$wide;
+	font-weight: 600;
+	font-size: 0.81rem;
+	letter-spacing: 0.08rem;
+	margin-left: 1.25rem;
+	text-transform: uppercase;
+
+	@include screen.atMedium {
+		display: block;
+	}
+}

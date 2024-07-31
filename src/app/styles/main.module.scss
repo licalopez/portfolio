@@ -1,0 +1,35 @@
+@use './variables/colors' as colors;
+@use './mixins/media-queries' as screen;
+
+.html {
+	scroll-behavior: smooth;
+
+	::-webkit-scrollbar {
+		width: 0.5rem;
+	
+		&-track {
+			background: colors.$aqua;
+		}
+	
+		&-thumb {
+			background: colors.$salmon;
+		}
+	
+		&-thumb:hover {
+			background: colors.$peach;
+		}
+	}
+}
+
+.body {
+	background-color: colors.$light;
+	margin: 0;
+	padding: 0;
+}
+
+.wrapper {
+	margin: 0 auto;
+	max-width: 69rem;
+	overflow: hidden;
+	width: 90%;
+}

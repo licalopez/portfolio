@@ -1,4 +1,6 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Angelica Lopez's Personal Portfolio
+
+Made with Next.js, SASS and React Transition Group.
 
 ## Getting Started
 
