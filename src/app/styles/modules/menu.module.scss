@@ -9,6 +9,7 @@
     M E N U  (modal closed)
 /******************************/
 .menu {
+	position: relative;
 	z-index: 5;
 }
 
@@ -59,6 +60,14 @@
 	}
 }
 
+.socials-container {
+	position: fixed;
+	right: 0;
+	top: 50%;
+	z-index: 10;
+
+}
+
 /******************************
            B R A N D
 /******************************/
@@ -76,19 +85,17 @@
 	right: 0%;												// tidies up transition to open modal
 	text-transform: uppercase;
 	// transform: translateX(-50%);   // tidies up transition to open modal
-	transition: all 150ms transition.$transition-timing 200ms;
+	transition: all 150ms transition.$transition-timing 300ms;
 	top: 1.88rem;
 	width: auto;
-	z-index: 10;
+	z-index: 15;
 
 	@include screen.atMedium {
 		margin-right: size.$menu-border-size;
-		right: 0;
-		// transform: translateX(-50%);  // for 'left' when SocialIcons aren't disabled
-		transform: translateX(0%);
 		position: fixed;
+		right: 0;
 		top: 0;
-		// width: 100%;									 // for 'left' when SocialIcons aren't disabled
+		transform: translateX(0%);
 		width: auto;
 	}
 }
@@ -116,8 +123,8 @@
 	top: 2.69rem;
 	transform: none;
 	transition: transition.$transition;
-	transition-duration: 300ms;
-	z-index: 10;
+	transition-duration: 400ms;
+	z-index: 15;
 
 	// focus on hamburger icon mode
 	&:focus-visible {

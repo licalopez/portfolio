@@ -1,0 +1,91 @@
+@use '../mixins/button-focus' as btn-focus;
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/transitions' as transition;
+
+.content-clickable {
+	background-color: transparent;
+	border: none;
+	color: color.$brown;
+	cursor: pointer;
+	font-family: font.$wide;
+	font-size: 0.85rem;
+	font-weight: 500;
+	letter-spacing: 0.35em;
+	padding: 1rem 2rem;
+	position: relative;
+	text-transform: uppercase;
+
+	@include screen.atSmall {
+		font-size: 1rem;
+	}
+	@include screen.atMedium {
+		font-size: 1rem;
+		padding: 1rem 1.75rem;
+	}
+	@include screen.atLarge {
+		font-size: 1.1rem;
+		padding: 1rem 2rem;
+	}
+	@include screen.atXLarge {
+		font-size: 1.25rem;
+	}
+
+	&.about-btn {
+		left: 2rem;							// offset 2rem padding
+		padding-left: 0.5rem;
+	}
+	&.skills-btn {
+		padding-right: 0.5rem;
+		right: 2rem;						// offset 2rem padding
+	}
+
+	&:focus {
+		box-shadow: 0 0 0 0.1875rem color.$dark;
+		outline: none;
+	}
+}
+
+.arrow {
+	animation-iteration-count: infinite;
+	animation-timing-function: transition.$transition-timing;
+	animation-duration: 3000ms;
+	color: color.$brown;
+	font-family: font.$wide;
+	font-size: 1rem;
+	position: relative;
+	top: 1px;
+
+	@include screen.atMedium {
+		font-size: 1.1rem;
+	}
+	@include screen.atLarge {
+		font-size: 1.3rem;
+	}
+
+	&.arrow-left {
+		animation-name: arrowLeft;
+		right: 0.19rem;
+	}
+	&.arrow-right {
+		animation-name: arrowRight;
+		left: 0.19rem;
+	}
+}
+
+
+/******************************
+      A N I M A T I O N S
+/******************************/
+@keyframes arrowLeft {
+	0%  { right: 0.19rem; }
+	25% { right: 0.63rem; }
+	50% { right: 0.19rem; }
+}
+
+@keyframes arrowRight {
+	0%  { left: 0.19rem; }
+	25% { left: 0.63rem; }
+	50% { left: 0.19rem; }
+}

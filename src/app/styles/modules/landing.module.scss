@@ -28,7 +28,6 @@
 		position: absolute;
 		text-align: center;
 		top: 50%;
-		// transform: translate(-50%, -50%);
 		transform: translate(-50%, -53.45%);
 		width: 100%;
 
@@ -48,6 +47,7 @@
 }
 
 .curve-container {
+	position: relative;
 	transform: translateY(25%);
 	width: 25rem;
 
@@ -67,27 +67,22 @@
 .greeting {
 	color: color.$dark;
 	fill: color.$dark;
-	font-family: font.$heading;
+	font-family: font.$wide;
 	font-size: 1.25rem;
-	font-weight: 400;
+	font-weight: 500;
 	left: 50%;
 	letter-spacing: 0.2rem;
 	position: absolute;
 	text-transform: uppercase;
-	// transform: translate(-50%, -130%);
 
 	@include screen.atSmall {
 		font-size: 1.35rem;
 		letter-spacing: 0.25rem;
-		// transform: translate(-40%, -70%);
 	}
 	@include screen.atMedium {
-		font-weight: 500;
-		// transform: translate(-50%, -130%);
 	}
 	@include screen.atLarge {
 		font-size: 1.5rem;
-		// transform: translate(-50%, -150%);
 	}
 	@include screen.atXLarge {
 		font-size: 1.56rem;
@@ -98,7 +93,6 @@
 	font-family: font.$heading;
 	font-size: 3.3rem;
 	font-weight: 600;
-	letter-spacing: 0.35rem;
 	position: relative;
 	text-transform: uppercase;
 	z-index: 3;
@@ -108,7 +102,6 @@
 	}
 	@include screen.atSmall {
 		font-size: 7.5rem;
-		transform: none;
 	}
 	@include screen.atMedium {
 		font-size: 8.5rem;
@@ -121,9 +114,17 @@
 	}
 }
 
+.first-name {
+	letter-spacing: 0.15rem;
+	position: relative;
+}
+
 .last-name {
 	font-size: 2.5rem;
 	font-weight: 400;
+	letter-spacing: 0.35rem;
+	position: relative;
+	margin: 0 40px;
 
 	@include screen.atXSmall {
 		font-size: 3.5rem;
@@ -145,8 +146,8 @@
 /****************************/
 .sub {
 	background-color: color.$light;
-	height: 30vh;
-	min-height: 17.5rem;
+	// height: 30vh;
+	// min-height: 17.5rem;
 	position: relative;
 	top: 0rem;
 	width: 100%;
@@ -154,13 +155,12 @@
 
 .sub-text-container {
 	color: color.$dark;
-	// font-family: 
 	font-size: 0.95rem;
 	font-weight: 700;
 	left: 1.6rem;
 	letter-spacing: 0.1rem;
 	line-height: 1.8;
-	padding-bottom: 17rem;
+	padding-bottom: 12rem;
 	padding-left: 0;
 	position: relative;
 	width: 85%;
@@ -172,12 +172,14 @@
 		width: 60%;
 	}
 	@include screen.atMedium {
-		font-size: 1.3rem;
-		left: 6.25em;
+		font-size: 1.25rem;
+		left: 5em;
+		padding-bottom: 15rem;
 		padding-left: 3.125em;
 	}
 	@include screen.atLarge {
-		font-size: 1.5rem;
+		font-size: 1.35rem;
+		left: 6.25em;
 		padding-left: 0;
 		width: 50%;
 	}
@@ -187,7 +189,7 @@
 	font-family: font.$wide;
 	font-weight: 500;
 	letter-spacing: 0.15rem;
-	text-transform: uppercase;;
+	text-transform: uppercase;
 }
 
 .sub-text-span {
@@ -197,41 +199,4 @@
 .sub-button {
 	margin-top: 2.1875rem;
 	text-decoration: none;
-}
-
-.scroll-prompt {
-	// border: 1px solid blue;
-	bottom: 0;
-	height: 59vh;
-	left: 50%;
-	position: absolute;
-	transform: translateX(-50%);
-	width: 50px;
-}
-
-.vertical1 {
-	background-color: color.$dark;
-	height: 5vh;
-	top: -10px;
-	left: 50%;
-	position: relative;
-	width: 2px;
-
-	@include screen.atMedium {
-		width: 3px;
-	}
-}
-
-.vertical2 {
-	background-color: color.$dark;
-	top: 350px;
-	bottom:0;
-	// height: 40vh;
-	left: 50%;
-	position: absolute;
-	width: 2px;
-
-	@include screen.atMedium {
-		width: 3px;
-	}
 }

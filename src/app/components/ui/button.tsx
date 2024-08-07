@@ -4,13 +4,15 @@ import styles from '@/app/styles/modules/button.module.scss'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
 	label?: string,
+	onClick: () => void,
 	variant?: 'default' | 'dark'
 }
 
-const Button: React.FC<ButtonProps> = ({ children, label, variant = 'default' }) => {
+const Button: React.FC<ButtonProps> = ({ children, label, onClick, variant = 'default' }) => {
 	return (
 		<button
 			className={classes(styles.button, variant === 'dark' ? styles['button-dark'] : '')}
+			onClick={onClick}
 			{...(label && { 'aria-label': label })}
 		>
 			{ children }

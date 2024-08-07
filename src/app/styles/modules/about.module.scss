@@ -1,0 +1,203 @@
+@use '../mixins/button-focus' as btn-focus;
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/transitions' as transition;
+
+/*******************************
+     	   H E A D I N G
+/*******************************/
+.about {
+	background-color: color.$tan;
+	padding-bottom: 16rem;						// make room for bg illustrations
+	position: relative;
+}
+
+.header {
+	position: relative;
+	transform: translateY(-0.15%); 		// trim dark line at the top of image
+	height: 41.875rem;
+
+	@include screen.atXSmall {
+		height: 21.5rem;
+	}
+	@include screen.atSmall {
+		height: 25.5rem;
+	}
+	@include screen.atMedium {
+		height: 35rem;
+	}
+	@include screen.atLarge {
+		height: 41.875rem;
+	}
+	@include screen.atXLarge {
+		height: 50rem;
+	}
+	@include screen.at2XLarge {
+		height: 54.5rem;
+	}
+	@include screen.at3XLarge {
+		height: 57rem;
+	}
+}
+
+.header-img-container {
+	position: absolute;
+}
+
+.header-img {
+	bottom: 0;
+	height: auto;
+	width: 100%;
+}
+
+.content-container {
+	background-color: color.$brown;
+	margin: -0rem auto;
+	padding: 2.75rem 5rem;
+	position: relative;
+	max-width: 71.875rem;
+	width: 70%;
+}
+
+.content-heading-container {
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	top: -3.2rem;
+	left: 2rem;
+	right: 2rem;
+
+	@include screen.atSmall {
+		top: -4.95rem;
+	}
+	@include screen.atMedium {
+		top: -5.7rem;
+	}
+	@include screen.atLarge {
+		top: -6.2rem;
+	}
+}
+
+.content-heading {
+	color: color.$brown;
+	font-family: font.$heading;
+	font-size: 3.5rem;
+	font-weight: 800;
+	text-transform: uppercase;
+
+	@include screen.atSmall {
+		font-size: 5.25rem;
+	}
+	@include screen.atMedium {
+		font-size: 5.94rem;
+	}
+	@include screen.atLarge {
+		font-size: 6.5rem
+	}
+}
+
+/*******************************
+     	   A B O U T   M E
+/*******************************/
+.content-text {
+	color: color.$light;
+	font-family: font.$wide;
+	font-size: 1rem;
+	line-height: 2.25;
+}
+
+.content-p {
+	margin: 1.5rem 0;
+}
+
+/*******************************
+       S K I L L S E T S
+/*******************************/
+.row {
+	align-items: center;
+	display: flex;
+	width: 100%;
+	border-bottom: 2px solid color.$aqua;
+
+	&:last-of-type {
+		border-bottom: none;
+	}
+}
+
+.label {
+	border-right: 2px solid color.$aqua;
+	flex: 1;
+	padding: 1.5rem 2rem;
+}
+
+.first-row {
+	padding-top: 3rem;
+}
+
+.label-text {
+	color: color.$aqua;
+	font-family: font.$heading;
+	font-size: 1.1rem;
+	letter-spacing: 0.25rem;
+}
+
+.graph {
+	padding: 0 2.5rem;
+	width: 50%;
+}
+
+/********************************
+ B G   I L L U S T R A T I O N S
+/********************************/
+.illustrations {
+	bottom: 0;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	width: 100%;
+}
+
+.left-container,
+.right-container {
+	bottom: 0;
+	position: relative;
+	z-index: 2;
+}
+
+.left-container {
+	left: -0.125rem;
+	max-width: 50.25rem;
+	width: 49vw;
+
+	@include screen.atMedium {
+		width: 48vw;
+	}
+	@include screen.atLarge {
+		width: 42vw;
+	}
+	@include screen.atXLarge {
+		width: 40vw;
+	}
+}
+
+.right-container {
+	margin-top: auto;
+	max-width: 43.25rem;
+	right: 0;
+	width: 46vw;
+
+	@include screen.atMedium {
+		width: 45vw;
+	}
+	@include screen.atLarge {
+		width: 40vw;
+	}
+}
+
+.left-img,
+.right-img {
+	height: 100%;
+	width: 100%;
+}

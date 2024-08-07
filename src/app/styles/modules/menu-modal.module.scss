@@ -1,0 +1,177 @@
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/sizes' as size;
+@use '../variables/transitions' as transition;
+
+/**********************************
+       M A I N    M E N U
+	     (modal open state)
+/**********************************/
+.brand {
+	opacity: 0;
+	top: 2.5rem;
+	transition: all 300ms transition.$transition-timing 200ms;
+}
+
+.menu-icon-button {
+	background-color: transparent;
+	transform: rotate(0deg);
+	transition: transition.$transition,
+							background-color 0ms;
+
+	@include screen.atMedium {
+		left: 2.5rem;
+	}
+}
+
+.hamburger-icon {
+	justify-content: normal;
+}
+
+.hamburger-line {
+	transition: transition.$transition;
+}
+
+.first-line {
+	transform: rotate(45deg) translateY(0.375rem) translateX(0.3125rem);
+	width: 1.38rem;
+}
+
+.second-line {
+	position: absolute;
+	top: 50%;
+	width: 0;
+}
+
+.third-line {
+	transform: rotate(-45deg) translateY(-0.0625rem) translateX(0rem);
+	width: 1.38rem;
+}
+
+
+/*******************************
+            M O D A L
+/*******************************/
+.modal {
+	background-color: color.$aqua;
+	height: 100%;
+	left: 0;
+	overflow: hidden;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 6;
+}
+
+.wrapper {
+	height: 100%;
+	max-width: 93.75rem;
+	position: relative;
+	width: 60%;
+
+	@include screen.atMedium {
+		text-align: left;
+		width: 60%;
+	}
+	@include screen.atLarge {
+		width: 65%;
+	}
+	@include screen.atXLarge {
+		width: 70%;
+	}
+}
+
+.laptop {
+	max-width: 81.25rem;
+	position: absolute;
+	right: 0;
+	top: 0;
+	transform: scale(65%);
+	transform-origin: right top;
+	// width: 60vw;
+	@include screen.atLarge {
+		transform: scale(80%);
+	}
+}
+
+.headphones {
+	bottom: 0;
+	position: absolute;
+	right: -15%;
+	transform-origin: bottom right;
+	// width: 140vw;
+
+	@include screen.atLarge {
+		// left: -5%;
+		right: -15%;
+		transform: scale(105%);
+		// width: 100vw;
+	}
+	@include screen.at2XLarge {
+		right: -10%;
+	}
+}
+
+/*******************************
+        N A V   L I S T
+/*******************************/
+.nav-list {
+	display: inline-block;
+	color: color.$dark;
+	font-family: font.$heading;
+	font-size: 1.9rem;
+	font-weight: 900;
+	left: 50%;
+	letter-spacing: 0.2rem;
+	list-style: none;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	margin: 0 auto;
+	padding-inline-start: 0;
+	position: absolute;
+	text-transform: uppercase;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	width: size.$modal-content-width-default;
+	z-index: 1;
+
+	@include screen.atXSmall {
+		font-size: 2.25rem;
+		width: size.$modal-content-width-xs;
+	}
+	@include screen.atSmall {
+		font-size: 2.8rem;
+		letter-spacing: 0.3rem;
+		width: size.$modal-content-width-sm;
+	}
+	@include screen.atMedium {
+		font-size: 3rem;
+		width: size.$modal-content-width-md;
+	}
+	@include screen.atLarge {
+		font-size: 3.75rem;
+		margin: 0 auto 0 0;
+		transform: translateY(-50%);
+		width: size.$modal-content-width-lg;
+	}
+}
+
+.nav-item {
+	// line-height: 2;
+	position: relative;
+}
+
+.nav-link {
+	color: color.$dark;
+	cursor: pointer;
+	text-decoration: none;
+}
+
+// S O C I A L   I C O N S
+.icons-container-modal {
+	height: 100vh;
+	position: relative;
+	width: 100%;
+	z-index: 0;   // don't let container obstruct nav links
+}

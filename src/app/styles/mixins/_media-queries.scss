@@ -29,7 +29,13 @@
 }
 
 @mixin at2XLarge {
-	@media only screen and (min-width: 1536px) {
+	@media only screen and (min-width: 1900px) {
+		@content;
+	}
+}
+
+@mixin at3XLarge {
+	@media only screen and (min-width: 2200px) {
 		@content;
 	}
 }

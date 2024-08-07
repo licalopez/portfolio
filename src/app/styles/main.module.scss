@@ -6,15 +6,15 @@
 
 	::-webkit-scrollbar {
 		width: 0.5rem;
-	
+
 		&-track {
 			background: colors.$aqua;
 		}
-	
+
 		&-thumb {
 			background: colors.$salmon;
 		}
-	
+
 		&-thumb:hover {
 			background: colors.$peach;
 		}
@@ -24,6 +24,7 @@
 .body {
 	background-color: colors.$light;
 	margin: 0;
+	overflow-x: hidden;  // hide elements that animate out of frame horizontally
 	padding: 0;
 }
 

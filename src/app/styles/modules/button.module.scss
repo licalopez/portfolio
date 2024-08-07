@@ -1,8 +1,8 @@
+@use '../mixins/button-focus' as btn-focus;
 @use '../variables/colors' as color;
 @use '../variables/fonts' as font;
 @use '../mixins/media-queries' as screen;
 @use '../variables/transitions' as transition;
-@use '../mixins/button-focus' as btn-focus;
 
 .button {
 	background-color: transparent;
@@ -47,7 +47,7 @@
 	&:hover {
 		color: color.$salmon;
 		transition: color 200ms transition.$transition-timing;
-		
+
 		&:before {
 			transition: transition.$transition;
 			width: 0;
