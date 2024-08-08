@@ -1,6 +1,7 @@
 @use '../variables/colors' as color;
 @use '../variables/fonts' as font;
 @use '../mixins/media-queries' as screen;
+@use '../mixins/wrapper' as wrapper;
 
 /****************************
          H E A D E R
@@ -151,6 +152,10 @@
 	position: relative;
 	top: 0rem;
 	width: 100%;
+}
+
+.wrapper {
+	@include wrapper.wrapper;
 }
 
 .sub-text-container {

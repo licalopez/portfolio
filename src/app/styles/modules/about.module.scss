@@ -9,6 +9,7 @@
 /*******************************/
 .about {
 	background-color: color.$tan;
+	overflow-y: hidden;								// hide bg illustrations when we nudge them down to make content more legible
 	padding-bottom: 16rem;						// make room for bg illustrations
 	position: relative;
 }
@@ -51,13 +52,32 @@
 	width: 100%;
 }
 
+.body-container {
+	border: 1px solid blue;
+	max-height: 48rem;
+
+	@include screen.atMedium {
+		max-height: 46.25rem;
+	}
+}
+
 .content-container {
 	background-color: color.$brown;
 	margin: -0rem auto;
-	padding: 2.75rem 5rem;
+	padding: 2rem 2.5rem;
 	position: relative;
-	max-width: 71.875rem;
-	width: 70%;
+	max-width: none;
+	width: 85%;
+
+	@include screen.atMedium {
+		padding: 2.25rem 3.5rem;
+		width: 75%;
+	}
+	@include screen.atLarge {
+		max-width: 71.875rem;
+		padding: 2.75rem 5rem;
+		width: 70%;
+	}
 }
 
 .content-heading-container {
@@ -85,6 +105,7 @@
 	font-family: font.$heading;
 	font-size: 3.5rem;
 	font-weight: 800;
+	letter-spacing: -0.1rem;
 	text-transform: uppercase;
 
 	@include screen.atSmall {
@@ -104,8 +125,13 @@
 .content-text {
 	color: color.$light;
 	font-family: font.$wide;
-	font-size: 1rem;
-	line-height: 2.25;
+	font-size: 0.95rem;
+	line-height: 2.16;
+
+	@include screen.atMedium {
+		font-size: 1rem;
+		line-height: 2.25;
+	}
 }
 
 .content-p {
@@ -161,7 +187,7 @@
 
 .left-container,
 .right-container {
-	bottom: 0;
+	bottom: -0.25rem;
 	position: relative;
 	z-index: 2;
 }

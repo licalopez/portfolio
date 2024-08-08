@@ -1,0 +1,18 @@
+@use './media-queries' as screen;
+
+@mixin wrapper() {
+	margin: 0 auto;
+	max-width: 69rem;
+	overflow: hidden;
+	width: 90%;
+
+	@include screen.atSmall {
+		width: 85%;
+	}
+	@include screen.atMedium {
+		width: 80%;
+	}
+	@include screen.atLarge {
+		max-width: 75rem;
+	}
+}

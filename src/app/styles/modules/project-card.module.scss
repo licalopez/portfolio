@@ -1,0 +1,102 @@
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/transitions' as transition;
+
+.card-link {
+	aspect-ratio: 1000/772;
+	border: 0.625rem solid color.$aqua;
+	height: 100%;
+	max-width: 34.375rem;
+	transition: transform 200ms transition.$transition-timing;
+	width: 35%;
+
+	@include screen.atXSmall {
+		width: 46.75%;
+	}
+	@include screen.atSmall {
+		width: 48.1%;
+	}
+	@include screen.atLarge {
+		width: 32.2%;
+	}
+
+	&:hover,
+	&:focus,
+	&:focus-visible {
+		outline: none;
+		transform: scale(95%);
+		transition: transform 200ms transition.$transition-timing;
+
+		.labels-container {
+			transform: translateY(0%);
+			transition: transform 300ms transition.$transition-timing 0ms;
+		}
+	}
+}
+
+.project-card {
+	aspect-ratio: 1000/762;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+
+.thumbnail-container {
+	height: 100%;
+	position: absolute;
+	top: 0;
+	width: 100%;
+}
+
+.thumbnail {
+	height: auto;
+	width: 100%;
+}
+
+.labels-container {
+	align-items: center;
+	background-color: rgba(color.$aqua, 0.88);
+	backdrop-filter: blur(3px);
+	display: flex;
+	// height: 105%;							// extra height for spring transition
+	justify-content: center;
+	padding: 2rem 3rem;
+	// padding-top: 5%;
+	position: absolute;
+	top: 0;
+	transform: translateY(100%);
+	transition: transform 300ms transition.$transition-timing 200ms;
+	// width: 100%;
+	left: -5px;
+	right: -5px;
+	top: -5px;
+	bottom: -5px;
+	// width: 105%;
+}
+
+.labels {
+	color: color.$dark;
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	text-align: center;
+}
+
+.name {
+	font-family: font.$heading;
+	font-size: 1.15rem;
+	font-weight: 700;
+	text-transform: uppercase;
+}
+
+.view-prompt {
+	font-family: font.$wide;
+	font-size: 0.8rem;
+	font-weight: 500;
+	text-decoration: underline;
+	text-transform: uppercase;
+	letter-spacing: 0.08rem;
+}

@@ -84,7 +84,6 @@
 	position: absolute;
 	right: 0%;												// tidies up transition to open modal
 	text-transform: uppercase;
-	// transform: translateX(-50%);   // tidies up transition to open modal
 	transition: all 150ms transition.$transition-timing 300ms;
 	top: 1.88rem;
 	width: auto;
@@ -119,7 +118,6 @@
 	display: flex;
 	left: 4%;
 	position: fixed;
-	// right: 4%;
 	top: 2.69rem;
 	transform: none;
 	transition: transition.$transition;

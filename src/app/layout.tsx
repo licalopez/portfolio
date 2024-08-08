@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import styles from './styles/main.module.scss';
 import Menu from "./components/ui/menu";
+import './globals.css';
 
 export const metadata: Metadata = {
   title: "Angelica Lopez",

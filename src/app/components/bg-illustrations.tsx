@@ -3,11 +3,7 @@ import styles from '@/app/styles/modules/about.module.scss';
 import bgLeft from '../../../public/about-bg-left-md.png';
 import bgRight from '../../../public/about-bg-right-md.png';
 
-interface BackgroundIllustrationsProps {
-
-}
-
-const BackgroundIllustrations: React.FC<BackgroundIllustrationsProps> = () => {
+const BackgroundIllustrations = () => {
 	return (
 		<div className={styles.illustrations} aria-hidden="true">
 			<div className={styles['left-container']}>
@@ -18,6 +14,7 @@ const BackgroundIllustrations: React.FC<BackgroundIllustrationsProps> = () => {
 					objectPosition="bottom center"
 					src={bgLeft}
 					sizes="auto"
+					style={{ transform: `translateY(0%)` }}
 					quality={100}
 				/>
 			</div>
@@ -30,6 +27,7 @@ const BackgroundIllustrations: React.FC<BackgroundIllustrationsProps> = () => {
 					objectPosition="bottom center"
 					src={bgRight}
 					sizes="auto"
+					style={{ transform: `translateY(0%)` }}
 					quality={100}
 				/>
 			</div>

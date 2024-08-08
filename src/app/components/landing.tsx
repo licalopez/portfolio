@@ -80,7 +80,7 @@ const Landing: React.FC<LandingProps> = () => {
 
 			{/*------------------ S U B S E C T I O N ------------------*/}
 			<div id="landing-subsection" className={styles.sub}>
-				<div className="wrapper">
+				<div className={styles.wrapper}>
 					<motion.div
 						id="sub-text-container"
 						className={styles['sub-text-container']}

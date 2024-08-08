@@ -20,7 +20,7 @@ const About: React.FC<AboutProps> = () => {
 
 	const { scrollYProgress } = useScroll({
 		target: imgRef,
-		offset: ['0.3 1', '1 1.2']
+		offset: ['0.3 1', '1 1.1']
 		/**
 		 * Each set of numbers in `offset` represents the target element (imgRef) and container element (browser window)
 		 * 0 minimum = top of the element; 1 maximum = bottom of the element
@@ -41,6 +41,7 @@ const About: React.FC<AboutProps> = () => {
 					className={styles['header-img-container']}
 					style={{
 						transform: `translateY(-${(bgPosition - 0.1) * 35}%)`
+						// for mobile: bgPosition * 38
 					}}
 				>
 					<Image
@@ -51,21 +52,24 @@ const About: React.FC<AboutProps> = () => {
 				</motion.div>
 			</motion.div>
 
-			<AnimatePresence>
-				{currentSection === 'about' ? (
-					<AboutMe
-						key="about-me"
-						currentSection={currentSection}
-						setCurrentSection={setCurrentSection}
-					/>
-				) : (
-					<Skillsets
-						key="skillsets"
-						currentSection={currentSection}
-						setCurrentSection={setCurrentSection}
-					/>
-				)}
-			</AnimatePresence>
+			{/* `body-container` has a max-height that controls BackgroundIllustrations from jumping vertically on the screen between 'about' and 'skills' transitions */}
+			<div className={styles['body-container']}>
+				<AnimatePresence>
+					{currentSection === 'about' ? (
+						<AboutMe
+							key="about-me"
+							currentSection={currentSection}
+							setCurrentSection={setCurrentSection}
+						/>
+					) : (
+						<Skillsets
+							key="skillsets"
+							currentSection={currentSection}
+							setCurrentSection={setCurrentSection}
+						/>
+					)}
+				</AnimatePresence>
+			</div>
 
 			<BackgroundIllustrations />
 		</section>

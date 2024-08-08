@@ -1,14 +1,14 @@
-import styles from './styles/main.module.scss';
 import Landing from "./components/landing";
 import About from "./components/about/about";
-import './globals.css';
+import Projects from './components/projects/projects';
 
 
 export default function Home() {
   return (
-    <main className={styles.main}>
+    <main>
       <Landing />
       <About />
+      <Projects />
     </main>
   );
 }

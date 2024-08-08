@@ -3,22 +3,6 @@
 
 .html {
 	scroll-behavior: smooth;
-
-	::-webkit-scrollbar {
-		width: 0.5rem;
-
-		&-track {
-			background: colors.$aqua;
-		}
-
-		&-thumb {
-			background: colors.$salmon;
-		}
-
-		&-thumb:hover {
-			background: colors.$peach;
-		}
-	}
 }
 
 .body {
@@ -26,11 +10,4 @@
 	margin: 0;
 	overflow-x: hidden;  // hide elements that animate out of frame horizontally
 	padding: 0;
-}
-
-.wrapper {
-	margin: 0 auto;
-	max-width: 69rem;
-	overflow: hidden;
-	width: 90%;
 }
