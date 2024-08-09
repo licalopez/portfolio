@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import styles from '@/app/styles/modules/menu-modal.module.scss';
 import Link from "next/link";
 import SocialIconsList from "../social-icons-list";
-import { slideUpVariant } from "@/app/helpers/animation-variants";
+import { slideUpVariantWithExit } from "@/app/helpers/animation-variants";
 
 interface ModalLinksProps {
 	closeMenuModal: () => void,
@@ -23,19 +23,14 @@ const MENU_LINKS: Link[] = [
 const ModalLinks: React.FC<ModalLinksProps> = ({ closeMenuModal, isMenuModalOpen }) => {
 	const menuListTransition = {
 		initial: { opacity: 0 },
-		final: {
-			opacity: 1,
-			transition: {
-				delayChildren: 0.7,
-				staggerChildren: 0.07,
-			}
-		},
-		exit: { opacity: 0 },
-	}
-
-	const menuItemTransition = {
-		...slideUpVariant,
-		exit: { opacity: 0, y: '2.5rem' },
+		final: { opacity: 1, transition: {
+			delayChildren: 0.7,
+			staggerChildren: 0.07,
+		}},
+		exit: { opacity: 0, transition: {
+			delayChildren: 0.02,
+			staggerChildren: 0.07
+		}},
 	}
 
 	return (
@@ -51,7 +46,7 @@ const ModalLinks: React.FC<ModalLinksProps> = ({ closeMenuModal, isMenuModalOpen
 					<motion.li
 						key={menuItem.route}
 						className={styles['nav-item']}
-						variants={menuItemTransition}
+						variants={slideUpVariantWithExit}
 					>
 						<Link href={menuItem.route} className={styles['nav-link']} onClick={closeMenuModal}>
 							{ menuItem.label }
@@ -77,7 +72,7 @@ const ModalLinks: React.FC<ModalLinksProps> = ({ closeMenuModal, isMenuModalOpen
 					y: { delay: 0.9, duration: 0.25, type: 'spring', damping: 12 }
 				}}
 			>
-				<SocialIconsList isMenuModalOpen={isMenuModalOpen} />
+				<SocialIconsList context="modal" isMenuModalOpen={isMenuModalOpen} />
 			</motion.div>
 		</div>
 	)

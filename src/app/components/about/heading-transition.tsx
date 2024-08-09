@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { slideUpVariant } from "@/app/helpers/animation-variants";
+import { slideUpVariant, slideUpVariantWithExit } from "@/app/helpers/animation-variants";
 import styles from "@/app/styles/modules/about.module.scss";
 
 interface HeadingTransitionProps {
@@ -8,20 +8,20 @@ interface HeadingTransitionProps {
 
 const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 	const headingVariant = {
-		...slideUpVariant,
+		...slideUpVariantWithExit,
 		final: {
 			opacity: 1, y: 0,
 			transition: {
-				opacity: { delay: 0.85, duration: 0.1 },
-				y: { delay: 0.8, duration: 0.25, type: 'spring', damping: 12 },
+				opacity: { delay: 0.85, duration: 0.07 },
+				y: { delay: 0.8, duration: 0.09, type: 'spring', damping: 12 },
 				delayChildren: 0.98
 			},
 		},
 		exit: {
 			opacity: 0, y: '2.5rem',
 			transition: {
-				opacity: { delay: 0.1, duration: 0.1 },
-				y: { delay: 0.05, duration: 0.3, type: 'spring' }
+				opacity: { delay: 0.1, duration: 0.07 },
+				y: { delay: 0.05, duration: 0.09, type: 'spring' }
 			}
 		}
 	}
@@ -34,7 +34,6 @@ const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 				margin: '45px',
 				once: true
 			}}
-			custom="3rem"
 			initial="initial"
 			whileInView="final"
 			exit="exit"

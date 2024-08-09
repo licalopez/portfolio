@@ -1,0 +1,156 @@
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/button-focus' as btn-focus;
+@use '../mixins/media-queries' as screen;
+@use '../variables/transitions' as transition;
+@use '../mixins/wrapper' as wrapper;
+
+.form {
+	align-items: flex-start;
+	background-color: color.$dark;
+	display: flex;
+	flex-direction: column;
+	font-family: font.$heading;
+	font-weight: 500;
+	padding: 2.5rem 1.8rem;
+	position: relative;
+	text-align: left;
+	width: 100%;
+
+	@include screen.atSmall {
+		padding: 5rem 3.125rem 3.75rem;
+	}
+	@include screen.atMedium {
+		padding: 6.25rem 5rem 4.75rem;
+	}
+}
+
+.fields-container {
+	display: flex;
+	flex-wrap: wrap;
+	flex: 1;
+	justify-content: space-between;
+	width: 100%;
+}
+
+.hidden {
+	@include wrapper.sr-only;
+}
+
+.label {
+	color: color.$salmon;
+	display: block;
+	font-family: font.$wide;
+	font-size: 0.9rem;
+	letter-spacing: 0.1rem;
+	text-transform: uppercase;
+}
+
+.form-name-container,
+.form-email-container {
+	margin-bottom: 3rem;
+	position: relative;
+	width: 100%;
+
+	@include screen.atSmall {
+		margin-bottom: 3.75rem;
+	}
+	@include screen.atMedium {
+		width: 42%;
+	}
+}
+
+.form-message-container {
+	flex-shrink: 0;
+	width: 100%;
+}
+
+.form-name,
+.form-email,
+.form-message {
+	background-color: transparent;
+	border: none;
+	border-bottom: 1px solid color.$light;
+	border-radius: 0;
+	color: color.$light;
+	font-family: font.$heading;
+	font-size: 0.85rem;
+	font-weight: 300;
+	letter-spacing: 0.05em;
+	line-height: 2;
+	outline: none;
+	padding: 0.3rem 0;
+	transition: transition.$transition;
+	width: 100%;
+
+	@include screen.atMedium {
+		padding: 0.8rem 0 0.4rem;
+	}
+
+	&:focus {
+		border-bottom: 1px solid color.$salmon;
+		transition: transition.$transition;
+	}
+}
+
+.error {
+	border-bottom: 1px solid color.$salmon;
+	color: color.$salmon;
+	transition: transition.$transition;
+}
+
+.form-message {
+	margin-top: 0.25rem;
+	resize: none;
+}
+
+.input-error-msg {
+	bottom: -1.5em;
+	color: color.$salmon;
+	left: 0;
+	font-size: 0.9em;
+	font-weight: 300;
+	letter-spacing: 0.02em;
+	position: absolute;
+	width: 100%;
+
+	@include screen.atMedium {
+		bottom: -2em;
+	}
+}
+
+.mail-status {
+	border-left-style: solid;
+	border-left-width: 0.31rem;
+	display: block;
+	font-style: italic;
+	font-weight: 300;
+	letter-spacing: 0.03em;
+	line-height: 1.4;
+	margin-top: 1.3em;
+	padding: 0.3em 0.3em 0.3em 1.3em;
+}
+
+.success {
+	border-left-color: color.$aqua;
+	color: color.$aqua;
+}
+
+.failed {
+	border-left-color: color.$salmon;
+	color: color.$salmon;
+	font-size: 0.85rem;
+}
+
+.form-btn {
+	flex-grow: 0;
+	margin-top: 1.75rem;
+
+	@include screen.atMedium {
+		margin-top: 3.75rem;
+	}
+
+	&:focus {
+		@include btn-focus.focus(color.$salmon, color.$dark);
+	}
+}

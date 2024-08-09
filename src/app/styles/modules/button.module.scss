@@ -12,7 +12,7 @@
 	font-family: font.$wide;
 	font-size: 0.9rem;
 	font-weight: 500;
-	letter-spacing: 0.17rem;
+	letter-spacing: 0.15rem;
 	outline-color: color.$aqua;
 	overflow: hidden;
 	padding: 1em 2em;
@@ -25,11 +25,12 @@
 
 	@include screen.atXSmall {
 		font-size: 0.9rem;
+		padding: 1.15em 1.5em;
 	}
 	@include screen.atSmall {
 		font-size: 1rem;
-		letter-spacing: 0.35rem;
-		padding: 1.3em 2.8em;
+		letter-spacing: 0.25rem;
+		padding: 1.25em 1.9em;
 	}
 
 	&:before {
@@ -56,6 +57,21 @@
 
 	&:focus {
 		@include btn-focus.focus(color.$light, color.$salmon);
+	}
+}
+
+.disabled {
+	background-color: transparent;
+	border: 1px solid #9c9c9c;
+	color: #9c9c9c;
+	cursor: default;
+
+	&:hover {
+		color: #9c9c9c;
+	}
+
+	&::before {
+		background-color: transparent;
 	}
 }
 

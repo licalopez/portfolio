@@ -1,5 +1,31 @@
 @use './media-queries' as screen;
 
+// Vertical spacing within sections
+@mixin section() {
+	padding: 4rem 0 4.375rem;
+
+	@include screen.atMedium {
+		padding: 6.25rem 0 6.25rem;
+	}
+	@include screen.atLarge {
+		padding: 7rem 0 8rem;
+	}
+}
+
+// For screen readers / invisible in visual DOM
+@mixin sr-only() {
+	border: 0;
+	clip: rect(0, 0, 0, 0);
+	height: 1px;
+	margin: -1px;
+	overflow: hidden;
+	padding: 0;
+	position: absolute;
+	white-space: nowrap;
+	width: 1px;
+}
+
+// Horizontal spacing across viewport
 @mixin wrapper() {
 	margin: 0 auto;
 	max-width: 69rem;

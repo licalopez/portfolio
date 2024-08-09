@@ -44,6 +44,8 @@
 	// slightly smaller than the rest
 	&-linkedin {
 		height: 1rem;
+		position: relative;
+		top: -1px;
 		width: 1rem;
 	}
 
@@ -114,5 +116,49 @@
 	@include screen.atLarge {
 		height: 1.75rem;
 		width: 1.75rem;
+	}
+}
+
+/**********************************
+				   F O O T E R
+/**********************************/
+.icons-footer {
+	align-items: center;
+	display: flex;
+	padding: 0;
+	position: relative;
+	z-index: 1;
+
+	@include screen.atSmall {
+		margin-right: -1.4rem;		// offset icons' padding
+	}
+	@include screen.atMedium {
+		margin-right: -1.45rem;		// offset icons' padding
+	}
+}
+
+.icon-footer {
+	margin: 0 0.25rem;
+	padding: 0.5rem;
+
+	@include screen.atSmall {
+		padding: 0.94rem;
+	}
+}
+
+.svg-footer {
+	fill: color.$dark;
+	height: 1.13rem;
+	transition: transition.$transition;
+	width: 1.13rem;
+
+	@include screen.atMedium {
+		height: 1.25rem;
+		width: 1.25rem;
+	}
+
+	&:hover {
+		fill: color.$aqua;
+		transition: transition.$transition;
 	}
 }

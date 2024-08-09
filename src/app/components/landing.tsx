@@ -4,9 +4,11 @@ import { slideUpProps, slideUpVariant, widthVariant } from '../helpers/animation
 import styles from '../styles/modules/landing.module.scss';
 import Button from './ui/button';
 
-interface LandingProps {}
+interface LandingProps {
+	scrollToContact: () => void,
+}
 
-const Landing: React.FC<LandingProps> = () => {
+const Landing: React.FC<LandingProps> = ({ scrollToContact }) => {
 	return (
 		<section id="landing">
 			<header className={styles.header}>
@@ -44,7 +46,7 @@ const Landing: React.FC<LandingProps> = () => {
 								<path id="curve" d="M73.2,148.6c4-6.1,65.5-96.8,178.6-95.6c111.3,1.2,170.8,90.3,175.1,97" />
 							</defs>
 							<text>
-								<textPath alignment-baseline="top" startOffset="50%" dominantBaseline="middle" textAnchor="middle" xlinkHref="#curve" className={styles.greeting}>
+								<textPath alignmentBaseline="middle" startOffset="50%" dominantBaseline="middle" textAnchor="middle" xlinkHref="#curve" className={styles.greeting}>
 									Hi, my name is
 								</textPath>
 							</text>
@@ -100,7 +102,7 @@ const Landing: React.FC<LandingProps> = () => {
 						<div id="contact-button-link" className={styles['sub-button']}>
 							<Button
 								label="Scroll to Contact Form"
-								onClick={() => console.log('scroll to contact form')}
+								onClick={scrollToContact}
 							>
 								Contact Me
 							</Button>

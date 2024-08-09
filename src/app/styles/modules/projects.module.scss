@@ -6,14 +6,7 @@
 
 .projects {
 	background-color: color.$light;
-	padding: 4rem 0 7rem;
-
-	@include screen.atMedium {
-		padding: 7.25rem 0 9.38rem;
-	}
-	@include screen.atLarge {
-		padding: 9rem 0 10rem;
-	}
+	@include wrapper.section;
 }
 
 .wrapper {

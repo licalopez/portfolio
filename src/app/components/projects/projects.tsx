@@ -50,7 +50,7 @@ const Projects: React.FC<ProjectsProps> = () => {
 						className={styles['heading']}
 						variants={slideUpVariant}
 						transition={{
-							y: { duration: 0.2, type: 'spring', damping: 12 }
+							y: { duration: 15, type: 'spring', damping: 12 }
 						}}
 					>
 						Projects
@@ -59,11 +59,11 @@ const Projects: React.FC<ProjectsProps> = () => {
 						className={styles['sub-heading']}
 						variants={slideUpVariant}
 						transition={{
-							y: { duration: 0.2, type: 'spring', damping: 10 }
+							y: { duration: 0.18, type: 'spring', damping: 10 }
 						}}
 					>
 						<p className="sub-heading-p">
-							Take a look at some of my projects over the years, ranging from websites to web and mobile applications, covering work such as UI/UX design, front-end development and full-stack development.
+							Take a look at some of my projects over the years. Ranging from websites to web and mobile applications, I cover work that includes UI/UX design, front-end development and full-stack development.
 						</p>
 					</motion.div>
 				</motion.div>

@@ -1,6 +1,8 @@
 export declare global {
 	type AboutSection = 'about' | 'skills';
 
+	type MailStatus = 'success' | 'failed' | null;
+
 	type Project = {
 		id: number,
 		name: string,

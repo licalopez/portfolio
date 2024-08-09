@@ -1,0 +1,74 @@
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/sizes' as size;
+@use '../variables/transitions' as transition;
+@use '../mixins/wrapper' as wrapper;
+
+.contact {
+	@include wrapper.section;
+	background-color: color.$salmon;
+
+	@include screen.atMedium {
+		padding-bottom: 4.375rem;
+	}
+	@include screen.atLarge {
+		padding-bottom: 5rem;
+	}
+}
+
+.wrapper {
+	@include wrapper.wrapper;
+	margin-top: -1rem;					// offset gap atop h2 heading
+
+	@include screen.atSmall {
+		padding: size.$footer-padding-sm;
+	}
+	@include screen.atMedium {
+		padding: size.$footer-padding-md;
+	}
+	@include screen.atLarge {
+		padding: size.$footer-padding-lg;
+	}
+}
+
+.heading {
+	color: color.$dark;
+	font-family: font.$heading;
+	font-size: 3.5rem;
+	font-weight: 800;
+	letter-spacing: -0.1rem;
+	margin-block-start: 0;
+	margin-block-end: 0;
+	text-align: center;
+	text-transform: uppercase;
+
+	@include screen.atSmall {
+		font-size: 5.5rem;
+	}
+	@include screen.atMedium {
+		font-size: 6.25rem;
+	}
+	@include screen.atLarge {
+		font-size: 6.75rem
+	}
+}
+
+/******************************
+           F O R M
+/******************************/
+.contact-form-container {
+	height: 29.5rem;
+	margin-top: -1.3rem;
+	overflow: hidden;
+	width: 100%;
+
+	@include screen.atSmall {
+		height: 35rem;
+		margin-top: -2.1rem;
+	}
+	@include screen.atMedium {
+		height: 33rem;
+		margin-top: -2.45rem;
+	}
+}

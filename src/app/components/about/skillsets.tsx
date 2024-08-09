@@ -1,7 +1,7 @@
 import { AnimatePresence, motion } from "framer-motion"
 
 import { classes } from "@/app/helpers";
-import { slideUpVariant } from "@/app/helpers/animation-variants";
+import { slideUpVariant, slideUpVariantWithExit } from "@/app/helpers/animation-variants";
 import styles from '@/app/styles/modules/about.module.scss';
 import clickableStyles from '@/app/styles/modules/about-clickable.module.scss';
 
@@ -40,11 +40,6 @@ const Skillsets: React.FC<SkillsetsProps> = ({ currentSection, setCurrentSection
 			}
 		},
 		exit: { opacity: 0 }
-	};
-
-	const tableRowVariant = {
-		...slideUpVariant,
-		exit: { opacity: 0, y: '2.5rem' }
 	};
 
 	return (
@@ -100,7 +95,7 @@ const Skillsets: React.FC<SkillsetsProps> = ({ currentSection, setCurrentSection
 					<motion.div
 						key={`skillset-${i}`}
 						className={styles.row}
-						variants={tableRowVariant}
+						variants={slideUpVariantWithExit}
 						viewport={{ once: true }}
 					>
 						<div className={styles.label}>

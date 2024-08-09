@@ -1,0 +1,51 @@
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+@use '../variables/sizes' as size;
+@use '../variables/transitions' as transition;
+@use '../mixins/wrapper' as wrapper;
+
+.footer {
+	background-color: color.$salmon;
+	color: color.$dark;
+	font-family: font.$heading;
+	padding-bottom: 2rem;
+	position: relative;
+
+	@include screen.atSmall {
+		padding-bottom: 4rem;
+	}
+	@include screen.atMedium {
+		padding-bottom: 7.5rem;
+	}
+}
+
+.wrapper {
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	text-align: center;
+	@include wrapper.wrapper;
+
+	@include screen.atSmall {
+		flex-direction: row;
+		padding: size.$footer-padding-sm;
+		text-align: left;
+	}
+	@include screen.atMedium {
+		padding: size.$footer-padding-md;
+	}
+	@include screen.atLarge {
+		padding: size.$footer-padding-lg;
+	}
+}
+
+.copyright {
+	color: color.$dark;
+	font-family: font.$wide;
+	font-size: 0.9rem;
+	font-weight: 600;
+	letter-spacing: 0.02rem;
+	line-height: 1.5;
+}

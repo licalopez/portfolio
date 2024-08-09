@@ -1,0 +1,57 @@
+@use '../variables/colors' as color;
+@use '../variables/fonts' as font;
+@use '../mixins/media-queries' as screen;
+
+.success-container {
+	align-items: center;
+	background-color: color.$dark;
+	color: color.$light;
+	display: flex;
+	font-family: font.$wide;
+	font-weight: 300;
+	justify-content: center;
+	margin: 0 auto;
+	min-height: 32.81rem;
+	padding: 1.5rem 2.5rem;
+	text-align: center;
+
+	@include screen.atMedium {
+		padding: 2.5rem 5.5rem;
+	}
+}
+
+.success-heading {
+	color: color.$salmon;
+	font-family: font.$heading;
+	font-size: 1.65rem;
+	font-weight: 800;
+	letter-spacing: 0.05rem;
+	margin-bottom: 2em;
+	position: relative;
+
+	@include screen.atSmall {
+		font-size: 1.9rem;
+	}
+
+	&::after {
+		background-color: color.$salmon;
+		bottom: -1em;
+		content: '';
+		height: 0.19rem;
+		left: 50%;
+		position: absolute;
+		transform: translateX(-50%);
+		width: 2.81rem;
+	}
+}
+
+.success-p {
+	font-size: 0.9rem;
+	letter-spacing: 0.04em;
+	line-height: 1.5em;
+	margin-bottom: 1.5em;
+
+	@include screen.atSmall {
+		font-size: 1rem;
+	}
+}
