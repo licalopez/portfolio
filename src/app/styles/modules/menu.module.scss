@@ -6,7 +6,7 @@
 @use '../variables/transitions' as transition;
 
 /******************************
-    M E N U  (modal closed)
+*    M E N U  (modal closed)
 /******************************/
 .menu {
 	position: relative;
@@ -36,6 +36,7 @@
 		left: 0;
 		top: 0;
 		width: size.$menu-border-size;
+		// opacity: 0.5;
 	}
 
 	&-top {
@@ -50,6 +51,7 @@
 		right: 0;
 		top: 0;
 		width: size.$menu-border-size;
+		// opacity: 0.5;
 	}
 
 	&-bottom {
@@ -69,7 +71,7 @@
 }
 
 /******************************
-           B R A N D
+*          B R A N D
 /******************************/
 .brand {
 	color: color.$dark;
@@ -109,7 +111,7 @@
 }
 
 /******************************
-  	 M E N U   B U T T O N
+*  	 M E N U   B U T T O N
 /******************************/
 .menu-icon-button {
 	align-items: center;

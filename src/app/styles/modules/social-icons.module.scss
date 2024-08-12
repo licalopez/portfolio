@@ -4,9 +4,9 @@
 @use '../variables/sizes' as size;
 @use '../variables/transitions' as transition;
 
-/**********************************
-   O N   M O D A L   C L O S E D
-/**********************************/
+/***********************************
+*   O N   M O D A L   C L O S E D
+/***********************************/
 .icons {
 	align-items: center;
 	display: none;
@@ -34,6 +34,11 @@
 
 .link {
 	padding: 0.63rem;
+
+	&:focus-visible {
+		box-shadow: 0 0 0 0.1875rem color.$dark;
+		outline: none;
+	}
 }
 
 .svg {
@@ -55,9 +60,9 @@
 	}
 }
 
-/**********************************
-   O N   M O D A L   O P E N E D
-/**********************************/
+/***********************************
+*   O N   M O D A L   O P E N E D
+/***********************************/
 .icons-modal {
 	display: flex;
 	flex-direction: row;
@@ -120,7 +125,7 @@
 }
 
 /**********************************
-				   F O O T E R
+*				   F O O T E R
 /**********************************/
 .icons-footer {
 	align-items: center;

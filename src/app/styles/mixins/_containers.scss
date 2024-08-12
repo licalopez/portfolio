@@ -1,4 +1,16 @@
+@use '../variables/colors' as color;
 @use './media-queries' as screen;
+
+// Aqua container that animates when transitioning between pages
+@mixin page-transition-container() {
+	background-color: color.$aqua;
+	height: 0%;
+	left: 0;
+	position: fixed;
+	top: 0;
+	width: 100%;
+	z-index: 3;
+}
 
 // Vertical spacing within sections
 @mixin section() {

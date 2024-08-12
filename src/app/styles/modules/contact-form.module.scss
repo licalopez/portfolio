@@ -3,7 +3,7 @@
 @use '../mixins/button-focus' as btn-focus;
 @use '../mixins/media-queries' as screen;
 @use '../variables/transitions' as transition;
-@use '../mixins/wrapper' as wrapper;
+@use '../mixins/containers' as container;
 
 .form {
 	align-items: flex-start;
@@ -34,7 +34,7 @@
 }
 
 .hidden {
-	@include wrapper.sr-only;
+	@include container.sr-only;
 }
 
 .label {
@@ -105,18 +105,14 @@
 }
 
 .input-error-msg {
-	bottom: -1.5em;
 	color: color.$salmon;
 	left: 0;
-	font-size: 0.9em;
+	font-size: 0.75em;
 	font-weight: 300;
 	letter-spacing: 0.02em;
 	position: absolute;
+	top: 110%;
 	width: 100%;
-
-	@include screen.atMedium {
-		bottom: -2em;
-	}
 }
 
 .mail-status {

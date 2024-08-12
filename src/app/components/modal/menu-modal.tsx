@@ -17,16 +17,6 @@ const MenuModal: React.FC<MenuModalProps> = ({ closeMenuModal, isMenuModalOpen }
 			closeMenuModal();
 	}, [closeMenuModal]);
 
-	// Prevent vertical scrolling when modal is open; revert when closed
-	useEffect(() => {
-		if (isMenuModalOpen)
-			document.querySelector('body')!.style.overflowY = 'hidden';
-
-		return () => {
-			document.querySelector('body')!.style.overflowY = 'scroll'
-		};
-	}, [isMenuModalOpen]);
-
 	useEffect(() => {
 		document.addEventListener('keydown', closeOnEscKey);
 		return () => document.removeEventListener('keydown', closeOnEscKey);

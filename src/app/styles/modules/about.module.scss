@@ -96,17 +96,17 @@
 		top: -5.7rem;
 	}
 	@include screen.atLarge {
-		top: -6.2rem;
+		top: -5.8rem;
 	}
 }
 
 .content-heading {
 	color: color.$brown;
-	font-family: font.$heading;
+	font-family: font.$wide;
 	font-size: 3.5rem;
 	font-weight: 800;
-	letter-spacing: -0.1rem;
-	text-transform: uppercase;
+	// letter-spacing: -0.1rem;
+	// text-transform: uppercase;
 
 	@include screen.atSmall {
 		font-size: 5.25rem;

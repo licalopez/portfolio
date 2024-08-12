@@ -6,6 +6,7 @@ import './globals.css';
 export const metadata: Metadata = {
   title: "Angelica Lopez",
   description: "Angelica Lopez\'s web portfolio",
+  icons: "/favicon.ico",
 };
 
 export default function RootLayout({

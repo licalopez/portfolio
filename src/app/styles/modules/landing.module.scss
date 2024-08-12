@@ -1,7 +1,7 @@
 @use '../variables/colors' as color;
 @use '../variables/fonts' as font;
 @use '../mixins/media-queries' as screen;
-@use '../mixins/wrapper' as wrapper;
+@use '../mixins/containers' as container;
 
 /****************************
          H E A D E R
@@ -91,7 +91,7 @@
 }
 
 .name {
-	font-family: font.$heading;
+	font-family: font.$wide;
 	font-size: 3.3rem;
 	font-weight: 600;
 	position: relative;
@@ -155,7 +155,7 @@
 }
 
 .wrapper {
-	@include wrapper.wrapper;
+	@include container.wrapper;
 }
 
 .sub-text-container {
@@ -194,7 +194,7 @@
 	font-family: font.$wide;
 	font-weight: 500;
 	letter-spacing: 0.15rem;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 }
 
 .sub-text-span {

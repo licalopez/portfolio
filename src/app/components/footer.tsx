@@ -36,7 +36,10 @@ const Footer: React.FC<FooterProps> = () => {
 			<motion.div
 				className={styles['wrapper']}
 				variants={containerVariant}
-				viewport={{ once: true }}
+				viewport={{
+					margin: '-80px',
+					once: true
+				}}
 				initial="initial"
 				whileInView="final"
 			>

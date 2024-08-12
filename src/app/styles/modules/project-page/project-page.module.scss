@@ -1,0 +1,222 @@
+@use '../../variables/colors' as color;
+@use '../../variables/fonts' as font;
+@use '../../mixins/media-queries' as screen;
+@use '../../variables/sizes' as size;
+@use '../../variables/transitions' as transition;
+@use '../../mixins/containers' as container;
+
+.project-body {
+	min-height: 100vh;
+	width: 100%;
+}
+
+/******************************
+*        H E A D I N G
+/******************************/
+.header {
+	background-color: color.$salmon;
+	min-height: 60vh;
+	padding: 8.5rem 0rem 6.5rem 0rem;
+	position: relative;
+	width: 100%;
+
+	@include screen.atSmall {
+		padding: 10rem 0 7.25rem 0;
+	}
+}
+
+.wrapper {
+	@include container.wrapper;
+}
+
+.heading-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	margin-bottom: 3.5rem;
+}
+
+.project-label {
+	color: rgba(color.$light, 0.7);
+	font-family: font.$heading;
+	font-size: 1.4rem;
+	font-weight: 600;
+	letter-spacing: 0.04em;
+	text-transform: uppercase;
+}
+
+.name-container {
+	max-width: 85%;
+
+	@include screen.atMedium {
+		max-width: 65%;
+	}
+}
+
+.project-name {
+	color: color.$light;
+	font-family: font.$wide;
+	font-size: 4rem;
+	font-weight: 800;
+	letter-spacing: 0.04em;
+	line-height: 1;
+}
+
+.links-container {
+	color: color.$light;
+	display: flex;
+	font-family: font.$wide;
+	font-size: 0.9rem;
+	gap: 1rem;
+	justify-content: flex-start;
+	letter-spacing: 0.08em;
+	margin-top: 0.75rem;
+	text-transform: uppercase;
+}
+
+.link {
+	padding-bottom: 0.17rem;
+	position: relative;
+
+	&::after {
+		background-color: rgba(color.$light, 0.9);
+		bottom: 0;
+		content: '';
+		height: 0.125rem;
+		left: 0;
+		position: absolute;
+		transition: width 300ms transition.$transition-timing;
+		width: 0;
+	}
+
+	&:focus,
+	&:hover {
+		outline: none;
+
+		&::after {
+			width: 100%;
+		}
+	}
+}
+
+.text-container {
+	display: flex;
+	flex-direction: column;
+	font-family: font.$wide;
+	gap: 4.5rem;
+	justify-content: flex-start;
+
+	@include screen.atSmall {
+		flex-direction: row;
+	}
+	@include screen.atLarge {
+		gap: 5.5rem;
+	}
+}
+
+.details-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	width: 80%;
+
+	@include screen.atSmall {
+		width: 60%;
+	}
+}
+
+.text-heading {
+	color: rgba(color.$dark, 0.6);
+	font-family: font.$heading;
+	font-size: 1rem;
+	letter-spacing: 0.1em;
+	text-transform: uppercase;
+}
+
+.details-p {
+	color: color.$dark;
+	font-size: 0.88rem;
+	letter-spacing: 0.02em;
+	line-height: 1.8;
+}
+
+.stack-container {
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	width: 50%;
+
+	@include screen.atSmall {
+		width: 25%;
+	}
+}
+
+.stack-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.3rem;
+	list-style: none;
+}
+
+.stack-item {
+	background-color: rgba(color.$dark, 0.3);
+	border-radius: 0.25rem;
+	color: color.$light;
+	font-size: 0.75rem;
+	letter-spacing: 0.03em;
+	padding: 0.2rem 0.35rem;
+}
+
+/******************************
+*        G A L L E R Y
+/******************************/
+.gallery-container {
+	background-color: color.$light;
+	height: auto;
+	overflow: hidden;
+	padding: 0;
+	width: 100%;
+
+	@include screen.atSmall {
+		min-height: 40vh;
+	}
+	@include screen.atSmall {
+		padding: 0 1.5rem;		// if we want padding around each image
+	}
+	@include screen.atMedium {
+		padding: 0 size.$menu-border-size size.$menu-border-size;
+		padding: 0 size.$menu-border-size+0.75rem size.$menu-border-size size.$menu-border-size+0.75rem;    // if we want padding around each image
+	}
+}
+
+.gallery-scrollable {
+	display: flex;
+	flex: 1;
+	flex-direction: column;
+	height: 100%;
+	transition: transform 250ms transition.$transition-timing 50ms;
+
+	@include screen.atSmall {
+		flex-direction: row;
+	}
+}
+
+.image-container {
+	flex-shrink: 0;
+	height: 100%;
+	padding: 1.5rem 0.75rem;   // if we want padding around each image
+	width: 100%;
+
+	@include screen.atSmall {
+		width: 50%;
+	}
+	@include screen.at2XLarge {
+		width: 33.3333%;
+	}
+}
+
+.image {
+	height: 100%;
+	object-fit: cover;
+	width: 100%;
+}

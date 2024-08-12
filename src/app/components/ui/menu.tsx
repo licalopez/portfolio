@@ -1,5 +1,5 @@
 "use client";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { classes } from '@/app/helpers';
 import styles from '@/app/styles/modules/menu.module.scss';
@@ -16,6 +16,13 @@ interface MenuProps {
 
 const Menu: React.FC<MenuProps> = () => {
 	const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
+
+	// Prevent vertical scrolling when modal is open; revert when closed
+	useEffect(() => {
+		isMenuModalOpen
+			? document.querySelector('html')!.style.overflowY = 'hidden'
+			: document.querySelector('html')!.style.overflowY = 'scroll';
+	}, [isMenuModalOpen]);
 
 	const toggleMenuModal = () => {
 		setIsMenuModalOpen(prev => !prev);
@@ -69,7 +76,7 @@ const Menu: React.FC<MenuProps> = () => {
 							}
 						}}
 					>
-						<SocialIconsList isMenuModalOpen={isMenuModalOpen} />
+						<SocialIconsList />
 					</motion.div>
 				)}
 			</AnimatePresence>

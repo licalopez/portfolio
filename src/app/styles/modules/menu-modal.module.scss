@@ -166,6 +166,31 @@
 	color: color.$dark;
 	cursor: pointer;
 	text-decoration: none;
+	position: relative;
+	transition: color 150ms transition.$transition-timing 50ms;
+
+	&::after {
+		position: absolute;
+		content: '';
+		width: 0;
+		left: 0;
+		bottom: 0;
+		height: 5px;
+		background-color: color.$salmon;
+		transition: width 180ms transition.$transition-timing 50ms;
+	}
+
+	&:hover,
+	&:focus-visible {
+		color: color.$salmon;
+		outline: none;
+		transition: color 150ms transition.$transition-timing 50ms;
+
+		&::after {
+			width: 100%;
+			transition: width 180ms transition.$transition-timing 50ms;
+		}
+	}
 }
 
 // S O C I A L   I C O N S

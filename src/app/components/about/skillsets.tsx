@@ -46,8 +46,11 @@ const Skillsets: React.FC<SkillsetsProps> = ({ currentSection, setCurrentSection
 		<motion.div
 			aria-hidden={currentSection !== 'skills'}
 			className={styles['content-container']}
-			viewport={{ once: true }}
 			variants={slideUpVariant}
+			viewport={{
+				margin: '-140px',
+				once: true
+			}}
 			initial="initial"
 			whileInView="final"
 			transition={{
@@ -57,8 +60,8 @@ const Skillsets: React.FC<SkillsetsProps> = ({ currentSection, setCurrentSection
 			exit={{
 				opacity: 0, y: '2.5rem',
 				transition: {
-					opacity: { delay: 0.32, duration: 0.1 },
-					y: { delay: 0.1, duration: 0.3 }
+					opacity: { delay: 0.28, duration: 0.1 },
+					y: { delay: 0.13, duration: 0.3 }
 				}
 			}}
 		>

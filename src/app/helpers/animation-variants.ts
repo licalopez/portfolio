@@ -1,8 +1,21 @@
 type Opacity = number;
+type TransitionChildProps = { delayChildren?: number, staggerChildren?: number };
 type Y = string | number;
 type Width = string | number;
 
 /******************  V A R I A N T S  ******************/
+// Variant with no visible transition - its primary purpose is to control the delay and stagger transitions of its children
+export const generateParentOpacityVariant = ({ delayChildren, staggerChildren }: TransitionChildProps) => ({
+	initial: { opacity: 0 },
+	final: {
+		opacity: 1,
+		transition: {
+			delayChildren,
+			staggerChildren
+		}
+	}
+})
+
 export const slideUpVariant: {
 	initial: (verticalOffset?: Y) => ({ y: Y, opacity: Opacity }),
 	final: { y: Y, opacity: Opacity }

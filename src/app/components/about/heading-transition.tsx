@@ -21,7 +21,7 @@ const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 			opacity: 0, y: '2.5rem',
 			transition: {
 				opacity: { delay: 0.1, duration: 0.07 },
-				y: { delay: 0.05, duration: 0.09, type: 'spring' }
+				y: { delay: 0.03, duration: 0.09, type: 'spring' }
 			}
 		}
 	}
@@ -31,7 +31,7 @@ const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 			className={styles['content-heading-container']}
 			variants={headingVariant}
 			viewport={{
-				margin: '45px',
+				margin: '-170px',
 				once: true
 			}}
 			initial="initial"

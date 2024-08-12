@@ -33,10 +33,10 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ resetMailStatus }) => {
 				exit="exit"
 			>
 				<motion.h5 className={styles['success-heading']} variants={slideUpVariantWithExit}>
-					Thank you for reaching out
+					Thanks for reaching out!
 				</motion.h5>
 				<motion.p className={styles['success-p']} variants={slideUpVariantWithExit}>
-					Your message has been delivered and Angelica will reply to you soon.
+					Your message has been delivered and Angelica will get in touch with you soon.
 				</motion.p>
 				<motion.div variants={slideUpVariantWithExit}>
 					<Button onClick={resetMailStatus}>

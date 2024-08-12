@@ -14,7 +14,7 @@ const Contact: React.FC<ContactProps> = forwardRef(({ }, ref) => {
 	const [mailStatus, setMailStatus] = useState<MailStatus>(null);
 
 	return (
-		<section className={styles['contact']} ref={ref}>
+		<section id="contact" className={styles['contact']} ref={ref}>
 			<div className={styles['wrapper']}>
 				<div className={styles['heading-container']}>
 					<motion.h2

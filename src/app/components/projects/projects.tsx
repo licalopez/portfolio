@@ -37,12 +37,15 @@ const Projects: React.FC<ProjectsProps> = () => {
 	};
 
 	return (
-		<section className={styles.projects}>
+		<section id="projects" className={styles.projects}>
 			<div className={styles.wrapper}>
 				<motion.div
 					className={styles['heading-container']}
 					variants={headingVariant}
-					viewport={{ once: true }}
+					viewport={{
+						margin: '-140px',
+						once: true
+					}}
 					initial="initial"
 					whileInView="final"
 				>
@@ -71,7 +74,10 @@ const Projects: React.FC<ProjectsProps> = () => {
 				<motion.div
 					className={styles['body-container']}
 					variants={slideUpVariant}
-					viewport={{ once: true }}
+					viewport={{
+						margin: '-120px',
+						once: true
+					}}
 					initial="initial"
 					whileInView="final"
 					transition={{

@@ -1,4 +1,5 @@
-@use './variables/colors' as colors;
+@use './variables/colors' as color;
+@use './mixins/containers' as container;
 @use './mixins/media-queries' as screen;
 
 .html {
@@ -6,8 +7,12 @@
 }
 
 .body {
-	background-color: colors.$light;
+	background-color: color.$light;
 	margin: 0;
 	overflow-x: hidden;  // hide elements that animate out of frame horizontally
 	padding: 0;
+}
+
+.page-transition-container {
+	@include container.page-transition-container;
 }

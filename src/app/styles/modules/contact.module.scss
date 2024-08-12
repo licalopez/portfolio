@@ -3,10 +3,10 @@
 @use '../mixins/media-queries' as screen;
 @use '../variables/sizes' as size;
 @use '../variables/transitions' as transition;
-@use '../mixins/wrapper' as wrapper;
+@use '../mixins/containers' as container;
 
 .contact {
-	@include wrapper.section;
+	@include container.section;
 	background-color: color.$salmon;
 
 	@include screen.atMedium {
@@ -18,7 +18,7 @@
 }
 
 .wrapper {
-	@include wrapper.wrapper;
+	@include container.wrapper;
 	margin-top: -1rem;					// offset gap atop h2 heading
 
 	@include screen.atSmall {
@@ -34,14 +34,14 @@
 
 .heading {
 	color: color.$dark;
-	font-family: font.$heading;
+	font-family: font.$wide;
 	font-size: 3.5rem;
 	font-weight: 800;
-	letter-spacing: -0.1rem;
+	// letter-spacing: -0.1rem;
 	margin-block-start: 0;
 	margin-block-end: 0;
 	text-align: center;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 
 	@include screen.atSmall {
 		font-size: 5.5rem;
@@ -55,7 +55,7 @@
 }
 
 /******************************
-           F O R M
+*           F O R M
 /******************************/
 .contact-form-container {
 	height: 29.5rem;

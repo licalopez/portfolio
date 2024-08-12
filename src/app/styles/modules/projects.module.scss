@@ -2,15 +2,15 @@
 @use '../variables/fonts' as font;
 @use '../mixins/media-queries' as screen;
 @use '../variables/transitions' as transition;
-@use '../mixins/wrapper' as wrapper;
+@use '../mixins/containers' as container;
 
 .projects {
 	background-color: color.$light;
-	@include wrapper.section;
+	@include container.section;
 }
 
 .wrapper {
-	@include wrapper.wrapper;
+	@include container.wrapper;
 }
 
 .heading-container {
@@ -35,13 +35,13 @@
 
 .heading {
 	color: color.$salmon;
-	font-family: font.$heading;
+	font-family: font.$wide;
 	font-size: 3.5rem;
 	font-weight: 800;
 	letter-spacing: -0.1rem;
 	margin-block-start: 0;
 	margin-block-end: 0;
-	text-transform: uppercase;
+	// text-transform: uppercase;
 
 	@include screen.atSmall {
 		font-size: 5.5rem;

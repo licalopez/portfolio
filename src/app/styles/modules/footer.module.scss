@@ -3,7 +3,7 @@
 @use '../mixins/media-queries' as screen;
 @use '../variables/sizes' as size;
 @use '../variables/transitions' as transition;
-@use '../mixins/wrapper' as wrapper;
+@use '../mixins/containers' as container;
 
 .footer {
 	background-color: color.$salmon;
@@ -26,7 +26,7 @@
 	flex-direction: column;
 	justify-content: space-between;
 	text-align: center;
-	@include wrapper.wrapper;
+	@include container.wrapper;
 
 	@include screen.atSmall {
 		flex-direction: row;

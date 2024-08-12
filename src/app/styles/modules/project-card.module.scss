@@ -8,7 +8,9 @@
 	border: 0.625rem solid color.$aqua;
 	height: 100%;
 	max-width: 34.375rem;
-	transition: transform 200ms transition.$transition-timing;
+	transition: border 150ms transition.$transition-timing,
+							box-shadow 150ms transition.$transition-timing,
+							transform 200ms transition.$transition-timing;
 	width: 35%;
 
 	@include screen.atXSmall {
@@ -24,9 +26,14 @@
 	&:hover,
 	&:focus,
 	&:focus-visible {
+		// border-color: color.$salmon;
+		box-shadow: 0 0 0 0.3125rem color.$light,
+								0 0 0 0.625rem color.$salmon;
 		outline: none;
 		transform: scale(95%);
-		transition: transform 200ms transition.$transition-timing;
+		transition: border 150ms transition.$transition-timing,
+								box-shadow 150ms transition.$transition-timing,
+								transform 200ms transition.$transition-timing;
 
 		.labels-container {
 			transform: translateY(0%);

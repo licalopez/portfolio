@@ -38,7 +38,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ currentSection, setCurrentSection }) 
 			className={styles['content-container']}
 			variants={slideUpVariant}
 			viewport={{
-				margin: '70px',
+				margin: '-140px',
 				once: true
 			}}
 			initial="initial"
@@ -50,8 +50,8 @@ const AboutMe: React.FC<AboutMeProps> = ({ currentSection, setCurrentSection }) 
 			exit={{
 				opacity: 0, y: '2.5rem',
 				transition: {
-					opacity: { delay: 0.32, duration: 0.1 },
-					y: { delay: 0.1, duration: 0.3 }
+					opacity: { delay: 0.28, duration: 0.1 },
+					y: { delay: 0.13, duration: 0.3 }
 				}
 			}}
 		>
@@ -98,7 +98,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ currentSection, setCurrentSection }) 
 						variants={paragraphVariant}
 						viewport={{ once: true }}
 					>
-						With a love for programming and design and a knack for turning ideas into engaging online experiences, I&apos;ve dedicated my career to building user-friendly websites and applications that not only look great but are also accessible to all users and function seamlessly.
+						With a love for programming and design and a knack for turning ideas into engaging online experiences, I&apos;ve dedicated my career to building user-friendly webpages and applications that not only look great but also function seamlessly and are accessible to all users.
 					</motion.p>
 					<motion.p
 						className={styles['content-p']}
