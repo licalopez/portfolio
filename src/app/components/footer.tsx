@@ -2,23 +2,18 @@
 import { motion } from "framer-motion";
 import styles from "@/app/styles/modules/footer.module.scss";
 import SocialIconsList from "./social-icons-list";
-import { slideUpVariant } from "../helpers/animation-variants";
+import { generateParentOpacityVariant, slideUpVariant } from "../helpers/animation-variants";
 
 interface FooterProps {}
 
 const Footer: React.FC<FooterProps> = () => {
 	const date = new Date();
 
-	const containerVariant = {
-		initial: { opacity: 0 },
-		final: {
-			opacity: 1,
-			transition: {
-				delayChildren: 0.1,
-				staggerChildren: 0.15
-			}
-		}
-	};
+
+	const containerVariant = generateParentOpacityVariant({
+		delayChildren: 0.1,
+		staggerChildren: 0.15
+	});
 
 	const copyrightVariant = {
 		...slideUpVariant,
@@ -27,6 +22,16 @@ const Footer: React.FC<FooterProps> = () => {
 			transition: {
 				delayChildren: 0.03,
 				staggerChildren: 0.1
+			}
+		}
+	};
+
+	const textVariant = {
+		...slideUpVariant,
+		final: {
+			...slideUpVariant.final,
+			transition: {
+				y: { duration: 0.15, type: 'spring', damping: 11 }
 			}
 		}
 	};
@@ -44,15 +49,15 @@ const Footer: React.FC<FooterProps> = () => {
 				whileInView="final"
 			>
 				<motion.div className={styles['copyright-container']} variants={copyrightVariant}>
-					<motion.p className={styles['copyright']} variants={slideUpVariant}>
+					<motion.p className={styles['copyright']} variants={textVariant}>
 						&copy; {date.getFullYear()} Angelica Lopez
 					</motion.p>
-					<motion.p className={styles['copyright']} variants={slideUpVariant}>
+					<motion.p className={styles['copyright']} variants={textVariant}>
 						All rights reserved
 					</motion.p>
 				</motion.div>
 
-				<motion.div className={styles['socials-container']} variants={slideUpVariant}>
+				<motion.div className={styles['socials-container']} variants={textVariant}>
 					<SocialIconsList context="footer" />
 				</motion.div>
 			</motion.div>

@@ -1,14 +1,17 @@
 "use client";
 import { motion } from "framer-motion";
-import styles from "@/app/styles/modules/contact-success.module.scss";
-import Button from "../ui/button";
 import { slideUpVariantWithExit } from "@/app/helpers/animation-variants";
+import { useModalContext } from "@/app/hooks/useModalContext";
+import Button from "../ui/button";
+import styles from "@/app/styles/modules/contact-success.module.scss";
 
 interface SuccessMessageProps {
 	resetMailStatus: () => void
 }
 
 const SuccessMessage: React.FC<SuccessMessageProps> = ({ resetMailStatus }) => {
+	const [isMenuModalOpen] = useModalContext();
+
 	const containerVariant = {
 		initial: { opacity: 0 },
 		final: { opacity: 1, transition: {
@@ -39,7 +42,7 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ resetMailStatus }) => {
 					Your message has been delivered and Angelica will get in touch with you soon.
 				</motion.p>
 				<motion.div variants={slideUpVariantWithExit}>
-					<Button onClick={resetMailStatus}>
+					<Button onClick={resetMailStatus} tabIndex={isMenuModalOpen ? -1 : 1}>
 						Return to Form
 					</Button>
 				</motion.div>
@@ -48,4 +51,4 @@ const SuccessMessage: React.FC<SuccessMessageProps> = ({ resetMailStatus }) => {
 	)
 }
 
-export default SuccessMessage
+export default SuccessMessage;

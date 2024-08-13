@@ -1,21 +1,21 @@
 "use client";
 import { useCallback, useEffect } from "react";
 import { motion } from "framer-motion";
-import styles from '@/app/styles/modules/menu-modal.module.scss';
+import { useModalContext } from "@/app/hooks/useModalContext";
 import { widthVariant } from "../../helpers/animation-variants";
+
 import ModalIllustrations from "./modal-illustrations";
 import ModalLinks from "./modal-links";
+import styles from '@/app/styles/modules/menu-modal.module.scss';
 
-interface MenuModalProps {
-	closeMenuModal: () => void,
-	isMenuModalOpen: boolean,
-}
 
-const MenuModal: React.FC<MenuModalProps> = ({ closeMenuModal, isMenuModalOpen }) => {
+const MenuModal = () => {
+	const [isMenuModalOpen, setIsMenuModalOpen] = useModalContext();
+
 	const closeOnEscKey = useCallback((event: KeyboardEvent) => {
 		if (event.key === 'Escape')
-			closeMenuModal();
-	}, [closeMenuModal]);
+			setIsMenuModalOpen(false);
+	}, []);
 
 	useEffect(() => {
 		document.addEventListener('keydown', closeOnEscKey);
@@ -41,7 +41,7 @@ const MenuModal: React.FC<MenuModalProps> = ({ closeMenuModal, isMenuModalOpen }
 			}}
 		>
 			<ModalIllustrations />
-			<ModalLinks closeMenuModal={closeMenuModal} isMenuModalOpen={isMenuModalOpen} />
+			<ModalLinks />
 		</motion.div>
 	);
 }

@@ -1,6 +1,6 @@
 "use client"
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import { notFound } from "next/navigation";
 
 import { PROJECTS } from "../data/projects";
@@ -9,7 +9,8 @@ import styles from "@/app/styles/modules/project-page/project-page.module.scss";
 import ProjectGalleryControls from "../components/project-page/project-gallery-controls";
 import ProjectHeader from "../components/project-page/project-header";
 import ProjectGallery from "../components/project-page/project-gallery";
-import PageTransition from "../components/page-transition";
+// import PageTransition from "../components/page-transition";
+import { useModalContext } from "../hooks/useModalContext";
 
 interface ProjectPageProps {
 	params: { projectLabel: string },
@@ -23,7 +24,10 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 	const { id: projectId, name, description, filters, images, launchedSite, repoLink } = project;
 
 	const [galleryXPosition, setGalleryXPosition] = useState(0);
+	const [isMenuModalOpen] = useModalContext();
+
 	// Duration of container animations before text content starts transitioning in
+	// Decided to omit container animations, but might add them in the future
 	const contentDelay: number = 0.1;
 	const imageWidthPercentage = 50;
 	const maxXPosition = (images.length - 1) * imageWidthPercentage;
@@ -41,7 +45,7 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 	}
 
 	return (
-		<motion.div className={styles['project-body']}>
+		<motion.div className={styles['project-body']} aria-hidden={isMenuModalOpen}>
 			<header className={styles['header']}>
 				<ProjectHeader
 					contentDelay={contentDelay}

@@ -3,12 +3,15 @@ import { motion } from 'framer-motion';
 import { slideUpProps, slideUpVariant, widthVariant } from '../helpers/animation-variants';
 import styles from '../styles/modules/landing.module.scss';
 import Button from './ui/button';
+import { useModalContext } from '../hooks/useModalContext';
 
 interface LandingProps {
 	scrollToContact: () => void,
 }
 
 const Landing: React.FC<LandingProps> = ({ scrollToContact }) => {
+	const [isMenuModalOpen] = useModalContext();
+
 	return (
 		<section id="landing">
 			<header className={styles.header}>
@@ -101,8 +104,10 @@ const Landing: React.FC<LandingProps> = ({ scrollToContact }) => {
 						</p>
 						<div id="contact-button-link" className={styles['sub-button']}>
 							<Button
-								label="Scroll to Contact Form"
+								aria-hidden={isMenuModalOpen}
+								aria-label="Scroll to Contact Form"
 								onClick={scrollToContact}
+								tabIndex={isMenuModalOpen ? -1 : 1}
 							>
 								Contact Me
 							</Button>

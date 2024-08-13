@@ -18,16 +18,30 @@
 	background-color: color.$light;
 	border: none;
 	cursor: pointer;
+	opacity: 1;
 	padding: 1rem;
 	position: relative;
 	transition: background-color 200ms transition.$transition-timing 30ms;
 	z-index: 1;
+
+	&:disabled {
+		opacity: 0.6;
+
+		&:hover {
+			background-color: color.$light;
+
+			.arrow-icon {
+				fill: color.$dark;
+			}
+		}
+	}
 
 	&:focus-visible {
 		box-shadow: 0 0 0 0.1875rem color.$dark;
 		outline: none;
 		z-index: 2;		// so button outline isn't partially hidden when the right button rests above the left button
 	}
+
 	&:hover {
 		background-color: color.$dark;
 		transition: background-color 200ms transition.$transition-timing 30ms;

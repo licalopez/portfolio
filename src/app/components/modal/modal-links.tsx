@@ -1,14 +1,12 @@
 "use client";
-import { motion } from "framer-motion";
-import styles from '@/app/styles/modules/menu-modal.module.scss';
 import Link from "next/link";
-import SocialIconsList from "../social-icons-list";
+import { motion } from "framer-motion";
 import { slideUpVariantWithExit } from "@/app/helpers/animation-variants";
 
-interface ModalLinksProps {
-	closeMenuModal: () => void,
-	isMenuModalOpen: boolean
-}
+import SocialIconsList from "../social-icons-list";
+import styles from '@/app/styles/modules/menu-modal.module.scss';
+import { useModalContext } from "@/app/hooks/useModalContext";
+
 
 type Link = { route: string, label: string };
 
@@ -20,7 +18,9 @@ const MENU_LINKS: Link[] = [
 ]
 
 
-const ModalLinks: React.FC<ModalLinksProps> = ({ closeMenuModal, isMenuModalOpen }) => {
+const ModalLinks = () => {
+	const [_, setIsMenuModalOpen] = useModalContext();
+
 	const menuListTransition = {
 		initial: { opacity: 0 },
 		final: { opacity: 1, transition: {
@@ -48,7 +48,7 @@ const ModalLinks: React.FC<ModalLinksProps> = ({ closeMenuModal, isMenuModalOpen
 						className={styles['nav-item']}
 						variants={slideUpVariantWithExit}
 					>
-						<Link href={menuItem.route} className={styles['nav-link']} onClick={closeMenuModal}>
+						<Link href={menuItem.route} className={styles['nav-link']} onClick={() => setIsMenuModalOpen(false)}>
 							{ menuItem.label }
 						</Link>
 					</motion.li>
@@ -72,7 +72,7 @@ const ModalLinks: React.FC<ModalLinksProps> = ({ closeMenuModal, isMenuModalOpen
 					y: { delay: 0.9, duration: 0.25, type: 'spring', damping: 12 }
 				}}
 			>
-				<SocialIconsList context="modal" isMenuModalOpen={isMenuModalOpen} />
+				<SocialIconsList key="modal-socials" context="modal" />
 			</motion.div>
 		</div>
 	)

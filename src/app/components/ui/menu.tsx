@@ -1,5 +1,5 @@
 "use client";
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { classes } from '@/app/helpers';
 import styles from '@/app/styles/modules/menu.module.scss';
@@ -9,13 +9,11 @@ import Link from 'next/link';
 import SocialIconsList from '../social-icons-list';
 import MenuButton from './menu-button';
 import MenuModal from '../modal/menu-modal';
+import { useModalContext } from '@/app/hooks/useModalContext';
 
-interface MenuProps {
 
-}
-
-const Menu: React.FC<MenuProps> = () => {
-	const [isMenuModalOpen, setIsMenuModalOpen] = useState(false);
+const Menu = () => {
+	const [isMenuModalOpen, setIsMenuModalOpen] = useModalContext();
 
 	// Prevent vertical scrolling when modal is open; revert when closed
 	useEffect(() => {
@@ -35,7 +33,9 @@ const Menu: React.FC<MenuProps> = () => {
 				<div
 					className={classes(styles.border, styles['border-left'])}
 					onClick={() => setIsMenuModalOpen(prev => !prev)}
-				></div>
+				>
+
+				</div>
 				<div className={classes(styles.border, styles['border-top'])}></div>
 				<div className={classes(styles.border, styles['border-right'])}></div>
 				<div className={classes(styles.border, styles['border-bottom'])}></div>
@@ -44,23 +44,25 @@ const Menu: React.FC<MenuProps> = () => {
 			{/*------------------ B R A N D ------------------*/}
 			<div
 				id="brand"
+				aria-hidden={isMenuModalOpen}
 				className={classes(
 					styles.brand,
 					isMenuModalOpen ? modalStyles.brand : ''
 				)}
 			>
-				<Link href="/" className={styles['brand-link']}>
+				<Link href="/" className={styles['brand-link']} tabIndex={isMenuModalOpen ? -1 : 1}>
 					<span>Angelica Lopez</span>
 				</Link>
 			</div>
 
 			{/*------------------ M E N U   I C O N ------------------*/}
-			<MenuButton isMenuModalOpen={isMenuModalOpen} toggleMenuModal={toggleMenuModal} />
+			<MenuButton />
 
 			{/*------------------ S O C I A L S ------------------*/}
 			<AnimatePresence>
-				{ isMenuModalOpen ? null : (
+				{isMenuModalOpen ? null : (
 					<motion.div
+						aria-hidden={isMenuModalOpen}
 						className={styles['socials-container']}
 						initial={{ opacity: 0, y: '1rem' }}
 						whileInView={{ opacity: 1, y: 0, transition: {
@@ -76,16 +78,14 @@ const Menu: React.FC<MenuProps> = () => {
 							}
 						}}
 					>
-						<SocialIconsList />
+						<SocialIconsList key="menu-socials" context="menu" />
 					</motion.div>
 				)}
 			</AnimatePresence>
 
 			{/*------------------ M E N U   M O D A L ------------------*/}
 			<AnimatePresence>
-				{!isMenuModalOpen ? null : (
-					<MenuModal closeMenuModal={() => setIsMenuModalOpen(false)} isMenuModalOpen={isMenuModalOpen} />
-				)}
+				{!isMenuModalOpen ? null : <MenuModal />}
 			</AnimatePresence>
 		</div>
 	)

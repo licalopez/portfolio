@@ -3,12 +3,11 @@ import { classes } from '@/app/helpers';
 import styles from '@/app/styles/modules/button.module.scss'
 
 interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
-	label?: string,
 	onClick?: (e?: React.MouseEvent) => void,
 	variant?: 'default' | 'dark'
 }
 
-const Button: React.FC<ButtonProps> = ({ children, className, disabled, label, onClick, variant = 'default' }) => {
+const Button: React.FC<ButtonProps> = ({ children, className, disabled, onClick, variant = 'default', ...props }) => {
 	return (
 		<button
 			className={classes(
@@ -18,7 +17,7 @@ const Button: React.FC<ButtonProps> = ({ children, className, disabled, label, o
 				disabled ? styles.disabled : '',
 			)}
 			{...(onClick && { onClick })}
-			{...(label && { 'aria-label': label })}
+			{...props}
 		>
 			{ children }
 		</button>

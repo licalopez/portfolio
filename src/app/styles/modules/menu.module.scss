@@ -37,6 +37,12 @@
 		top: 0;
 		width: size.$menu-border-size;
 		// opacity: 0.5;
+		// transition: width 150ms transition.$transition-timing 50ms;
+
+		&:hover {
+			// width: size.$menu-border-size + 1rem;
+			// transition: width 150ms transition.$transition-timing 50ms;
+		}
 	}
 
 	&-top {

@@ -6,8 +6,13 @@
 	align-items: center;
 	justify-content: space-between;
 	max-width: 100%;
-	padding-right: 2rem;
+	padding-right: 0rem;
 
+	@include screen.atSmall {
+		padding-right: 1.35rem;
+	}
+	@include screen.atMedium {
+	}
 	@include screen.atLarge {
 		padding-right: 3.75rem;
 	}
@@ -18,10 +23,15 @@
 	border: 3px solid color.$aqua;
 	border-radius: 100%;
 	flex-shrink: 0;
-	height: 1.75rem;
+	height: 1.15rem;
 	overflow: hidden;
 	position: relative;
-	width: 1.75rem;
+	width: 1.15rem;
+
+	@include screen.atSmall {
+		height: 1.75rem;
+		width: 1.75rem;
+	}
 }
 
 .full {

@@ -1,5 +1,6 @@
 "use client";
 import { HTMLInputTypeAttribute } from "react";
+import { useModalContext } from "@/app/hooks/useModalContext";
 import type { FieldError, UseFormRegister } from "react-hook-form";
 import styles from "@/app/styles/modules/contact-form.module.scss";
 
@@ -11,6 +12,8 @@ interface FormFieldProps {
 }
 
 const FormField: React.FC<FormFieldProps> = ({ error, label, register, type }) => {
+	const [isMenuModalOpen] = useModalContext();
+
 	return (
 		<>
 			<label htmlFor={label} className={styles['label']}>
@@ -23,6 +26,7 @@ const FormField: React.FC<FormFieldProps> = ({ error, label, register, type }) =
 					aria-invalid={error ? true : false}
 					className={styles[`form-${label}`]}
 					required
+					tabIndex={isMenuModalOpen ? -1 : 1}
 					{...register(label)}
 				/>
 			) : (
@@ -32,6 +36,7 @@ const FormField: React.FC<FormFieldProps> = ({ error, label, register, type }) =
 					type={type}
 					className={styles[`form-${label}`]}
 					required
+					tabIndex={isMenuModalOpen ? -1 : 1}
 					{...register(label)}
 				/>
 			)}

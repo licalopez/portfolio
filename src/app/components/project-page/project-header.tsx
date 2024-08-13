@@ -12,6 +12,10 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ contentDelay, description
 		delayChildren: contentDelay + 0.08, staggerChildren: 0.1
 	});
 
+	const slideUpTransition = {
+		y: { duration: 0.13, type: 'spring', damping: 11 }
+	};
+
 	const nameAndLinksVariant = {
 		...slideUpVariant,
 		final: {
@@ -40,16 +44,16 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ contentDelay, description
 				initial="initial"
 				animate="final"
 			>
-				<motion.h2 className={styles['project-label']} variants={slideUpVariant}>
+				<motion.h2 className={styles['project-label']} variants={slideUpVariant} transition={slideUpTransition}>
 					Projects
 				</motion.h2>
 				<motion.div className={styles['name-container']} variants={nameAndLinksVariant}>
-					<motion.h1 className={styles['project-name']} variants={slideUpVariant}>
+					<motion.h1 className={styles['project-name']} variants={slideUpVariant} transition={slideUpTransition}>
 						{ name }
 					</motion.h1>
 
 					{launchedSite || repoLink ? (
-						<motion.div className={styles['links-container']} variants={slideUpVariant}>
+						<motion.div className={styles['links-container']} variants={slideUpVariant} transition={slideUpTransition}>
 							{!launchedSite ? null : (
 								<a href={launchedSite} rel="noopener noreferrer" target="_blank" className={styles['link']}>
 									Visit site
@@ -74,10 +78,10 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ contentDelay, description
 					initial="initial"
 					animate="final"
 				>
-					<motion.h3 className={styles['text-heading']} variants={slideUpVariant}>
+					<motion.h3 className={styles['text-heading']} variants={slideUpVariant} transition={slideUpTransition}>
 						Details
 					</motion.h3>
-					<motion.p className={styles['details-p']} variants={slideUpVariant}>
+					<motion.p className={styles['details-p']} variants={slideUpVariant} transition={slideUpTransition}>
 						{ description }
 					</motion.p>
 				</motion.section>
@@ -88,10 +92,10 @@ const ProjectHeader: React.FC<ProjectHeaderProps> = ({ contentDelay, description
 					initial="initial"
 					animate="final"
 				>
-					<motion.h3 className={styles['text-heading']} variants={slideUpVariant}>
+					<motion.h3 className={styles['text-heading']} variants={slideUpVariant} transition={slideUpTransition}>
 						Stack
 					</motion.h3>
-					<motion.ul className={styles['stack-list']} variants={slideUpVariant}>
+					<motion.ul className={styles['stack-list']} variants={slideUpVariant} transition={slideUpTransition}>
 						{filters?.map(filter => (
 							<li key={filter} className={styles['stack-item']}>
 								{filter}

@@ -1,7 +1,7 @@
-import type { StaticImageData } from "next/image";
-import Image from "next/image";
+import Image, { type StaticImageData} from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { useModalContext } from "@/app/hooks/useModalContext";
 import styles from "@/app/styles/modules/project-card.module.scss";
 
 interface ProjectCardProps {
@@ -10,6 +10,8 @@ interface ProjectCardProps {
 }
 
 const ProjectCard: React.FC<ProjectCardProps> = ({ project, thumbnail }) => {
+	const [isMenuModalOpen] = useModalContext();
+
 	const containerVariant = {
 		initial: { opacity: 0 },
 		hover: {
@@ -29,9 +31,11 @@ const ProjectCard: React.FC<ProjectCardProps> = ({ project, thumbnail }) => {
 
 	return (
 		<Link
+			aria-hidden={isMenuModalOpen}
 			aria-label={`View ${project.name} project page`}
 			className={styles['card-link']}
 			href={`/${project.path}`}
+			tabIndex={isMenuModalOpen ? -1 : 1}
 		>
 			<div className={styles['project-card']}>
 				<div className={styles['thumbnail-container']}>

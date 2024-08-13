@@ -90,6 +90,7 @@
 	transform: scale(65%);
 	transform-origin: right top;
 	// width: 60vw;
+
 	@include screen.atLarge {
 		transform: scale(80%);
 	}

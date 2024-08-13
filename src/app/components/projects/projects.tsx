@@ -12,7 +12,7 @@ import project2Thumbnail from '../../../../public/thumbnails/project2Thumbnail.j
 import project3Thumbnail from '../../../../public/thumbnails/project3Thumbnail.jpg';
 import project4Thumbnail from '../../../../public/thumbnails/project4Thumbnail.jpg';
 import project5Thumbnail from '../../../../public/thumbnails/project5Thumbnail.jpg';
-import { slideUpVariant } from '@/app/helpers/animation-variants';
+import { generateParentOpacityVariant, slideUpVariant } from '@/app/helpers/animation-variants';
 
 interface ProjectsProps {}
 
@@ -25,16 +25,10 @@ const Projects: React.FC<ProjectsProps> = () => {
 		project5Thumbnail
 	}), []);
 
-	const headingVariant = {
-		initial: { opacity: 0 },
-		final: {
-			opacity: 1,
-			transition: {
-				delayChildren: 0.3,
-				staggerChildren: 0.25
-			}
-		},
-	};
+	const headingVariant = generateParentOpacityVariant({
+		delayChildren: 0.3,
+		staggerChildren: 0.25
+	});
 
 	return (
 		<section id="projects" className={styles.projects}>
@@ -53,7 +47,7 @@ const Projects: React.FC<ProjectsProps> = () => {
 						className={styles['heading']}
 						variants={slideUpVariant}
 						transition={{
-							y: { duration: 15, type: 'spring', damping: 12 }
+							y: { duration: 0.15, type: 'spring', damping: 12 }
 						}}
 					>
 						Projects

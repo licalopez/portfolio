@@ -18,6 +18,10 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ contentDelay, galleryXP
 		staggerChildren: 0.055
 	});
 
+	const slideUpTransition = {
+		y: { duration: 0.15, type: 'spring', damping: 13 }
+	};
+
 	return (
 		<motion.div
 			className={styles['gallery-scrollable']}
@@ -31,7 +35,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ contentDelay, galleryXP
 					key={image.fileName}
 					aria-hidden={
 						/**
-						 * Visible range will be galleryXPosition and (galleryXPosition + imageWidthPercentage)
+						 * Visible range will start at galleryXPosition and (galleryXPosition + imageWidthPercentage)
 						 * Check if current position (index * imageWidthPercentage) falls between that range
 						 * TODO: Will change on different screen sizes
 						 */
@@ -40,6 +44,7 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ contentDelay, galleryXP
 					}
 					className={styles['image-container']}
 					variants={slideUpVariant}
+					transition={slideUpTransition}
 				>
 					<Image
 						alt={image.alt}

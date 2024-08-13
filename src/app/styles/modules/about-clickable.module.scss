@@ -12,13 +12,15 @@
 	font-family: font.$heading;
 	font-size: 0.85rem;
 	font-weight: 500;
-	letter-spacing: 0.35em;
-	padding: 1rem 2rem;
+	letter-spacing: 0.2em;
+	padding: 0.8rem 1rem;
 	position: relative;
 	text-transform: uppercase;
 
 	@include screen.atSmall {
-		font-size: 1rem;
+		font-size: 0.93rem;
+		letter-spacing: 0.35em;
+		padding: 1rem 2rem;
 	}
 	@include screen.atMedium {
 		font-size: 1rem;
@@ -35,13 +37,21 @@
 	&.about-btn {
 		left: 2rem;							// offset 2rem padding
 		padding-left: 0.5rem;
+
+		@include screen.atSmall {
+			left: 2rem;
+		}
 	}
 	&.skills-btn {
 		padding-right: 0.5rem;
 		right: 2rem;						// offset 2rem padding
+
+		@include screen.atSmall {
+			right: 2rem;
+		}
 	}
 
-	&:focus {
+	&:focus-visible {
 		box-shadow: 0 0 0 0.1875rem color.$dark;
 		outline: none;
 	}

@@ -41,10 +41,9 @@
 	letter-spacing: -0.1rem;
 	margin-block-start: 0;
 	margin-block-end: 0;
-	// text-transform: uppercase;
 
 	@include screen.atSmall {
-		font-size: 5.5rem;
+		font-size: 5.2rem;
 	}
 	@include screen.atMedium {
 		font-size: 6.25rem;

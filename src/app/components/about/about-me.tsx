@@ -1,9 +1,9 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 
-import { slideUpVariant } from "@/app/helpers/animation-variants";
+import { generateParentOpacityVariant, slideUpVariant } from "@/app/helpers/animation-variants";
 import { classes } from "@/app/helpers";
-import styles from '@/app/styles/modules/about.module.scss';
 import clickableStyles from '@/app/styles/modules/about-clickable.module.scss';
+import styles from '@/app/styles/modules/about.module.scss';
 
 import AboutClickable from "./about-clickable";
 import HeadingTransition from "./heading-transition";
@@ -15,17 +15,10 @@ interface AboutMeProps {
 
 
 const AboutMe: React.FC<AboutMeProps> = ({ currentSection, setCurrentSection }) => {
-	const bodyVariant = {
-		initial: { opacity: 0 },
-		final: {
-			opacity: 1,
-			transition: {
-				delayChildren: 0.58,
-				staggerChildren: 0.1
-			}
-		},
-		exit: { opacity: 0 }
-	};
+	const bodyVariant = generateParentOpacityVariant({
+		delayChildren: 0.58,
+		staggerChildren: 0.1
+	});
 
 	const paragraphVariant = {
 		...slideUpVariant,
@@ -46,18 +39,22 @@ const AboutMe: React.FC<AboutMeProps> = ({ currentSection, setCurrentSection }) 
 			transition={{
 				opacity: { delay: 0.6, duration: 0.1 },
 				y: { delay: 0.55, duration: 0.3 },
+				delayChildren: 0.8,
+				staggerChildren: 0.15
 			}}
 			exit={{
 				opacity: 0, y: '2.5rem',
 				transition: {
-					opacity: { delay: 0.28, duration: 0.1 },
-					y: { delay: 0.13, duration: 0.3 }
+					opacity: { delay: 0.23, duration: 0.1 },
+					y: { delay: 0.13, duration: 0.3 },
+					delayChildren: 0.1,
+					staggerChildren: 0.15
 				}
 			}}
 		>
 			{/************************** H E A D I N G **************************/}
 			<HeadingTransition key="about-heading-transition">
-				<AnimatePresence>
+				<>
 					<h2 className={classes(styles['content-heading'], styles['content-heading-about'])}>
 						About Me
 					</h2>
@@ -73,7 +70,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ currentSection, setCurrentSection }) 
 							<span className={classes(clickableStyles['arrow'], clickableStyles['arrow-right'])}>&rarr;</span>
 						</AboutClickable>
 					</motion.div>
-				</AnimatePresence>
+				</>
 			</HeadingTransition>
 
 			{/***************************** B O D Y *****************************/}

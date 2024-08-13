@@ -13,15 +13,18 @@ interface ProjectGalleryControlsProps {
 }
 
 const ProjectGalleryControls: React.FC<ProjectGalleryControlsProps> = ({ contentDelay, galleryXPosition, imageWidthPercentage, maxXPosition, onPrevious, onNext }) => {
+	const slideUpTransition = {
+		delay: contentDelay + 0.7,
+		y: { delay: contentDelay + 0.45, duration: 0.13, type: 'spring', damping: 12 }
+	};
+
 	return (
 		<motion.div
 			className={styles['gallery-controls']}
 			variants={slideUpVariant}
 			initial="initial"
 			animate="final"
-			transition={{
-				delay: contentDelay + 0.7
-			}}
+			transition={slideUpTransition}
 		>
 			<button
 				aria-label="Scroll to previous image"

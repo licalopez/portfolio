@@ -7,9 +7,11 @@ import { z } from "zod";
 
 import { classes } from "@/app/helpers";
 import { slideUpVariantWithExit } from "@/app/helpers/animation-variants";
-import styles from "@/app/styles/modules/contact-form.module.scss";
+import { useModalContext } from "@/app/hooks/useModalContext";
+
 import Button from "../ui/button";
 import FormField from "./form-field";
+import styles from "@/app/styles/modules/contact-form.module.scss";
 
 /*********************************
  *    F O R M   T Y P E S
@@ -42,6 +44,7 @@ interface ContactFormProps {
 }
 
 const ContactForm: React.FC<ContactFormProps> = ({ mailStatus, setMailStatus }) => {
+	const [isMenuModalOpen] = useModalContext();
 	const [isSending, setIsSending] = useState(false);
 
 	const form = useForm<FormValues>({
@@ -99,6 +102,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ mailStatus, setMailStatus }) 
 
 	return (
 		<motion.form
+			aria-hidden={isMenuModalOpen}
 			onSubmit={form.handleSubmit(onSubmit)}
 			className={styles['form']}
 			variants={formVariant}
@@ -119,7 +123,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ mailStatus, setMailStatus }) 
 				variants={formContentVariant}
 			>
 				<div id="formsubmit-features" className={styles['hidden']} aria-hidden>
-					<input type="text" name="_honey" aria-label="Honeypot for spammers; please ignore" className={styles['hidden']} />
+					<input type="text" name="_honey" aria-label="Honeypot for spammers; please ignore this field" className={styles['hidden']} tabIndex={isMenuModalOpen ? -1 : 1} />
 					<input type="hidden" name="_captcha" value="false" />
 					<input type="hidden" name="_subject" value="✨ New Contact Email ✨" />
 					<input type="hidden" name="_template" value="box" />
@@ -144,7 +148,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ mailStatus, setMailStatus }) 
 			</motion.div>
 
 			<motion.div variants={formContentVariant}>
-				<Button type="submit" className={styles['form-btn']} disabled={isSending}>
+				<Button type="submit" className={styles['form-btn']} disabled={isSending} tabIndex={isMenuModalOpen ? -1 : 1}>
 					Get In Touch
 				</Button>
 			</motion.div>

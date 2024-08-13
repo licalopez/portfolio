@@ -1,4 +1,4 @@
-import { AnimatePresence, motion } from "framer-motion"
+import { motion } from "framer-motion"
 
 import { classes } from "@/app/helpers";
 import { slideUpVariant, slideUpVariantWithExit } from "@/app/helpers/animation-variants";
@@ -55,19 +55,19 @@ const Skillsets: React.FC<SkillsetsProps> = ({ currentSection, setCurrentSection
 			whileInView="final"
 			transition={{
 				opacity: { delay: 0.6, duration: 0.1 },
-				y: { delay: 0.55, duration: 0.3 }
+				y: { delay: 0.55, duration: 0.3, type: 'spring', damping: 12 }
 			}}
 			exit={{
 				opacity: 0, y: '2.5rem',
 				transition: {
-					opacity: { delay: 0.28, duration: 0.1 },
+					opacity: { delay: 0.18, duration: 0.1 },
 					y: { delay: 0.13, duration: 0.3 }
 				}
 			}}
 		>
 			{/************************** H E A D I N G **************************/}
 			<HeadingTransition>
-				<AnimatePresence>
+				<>
 					<motion.div key="view-about-button" variants={slideUpVariant}>
 						<AboutClickable
 							currentSection={currentSection}
@@ -82,7 +82,7 @@ const Skillsets: React.FC<SkillsetsProps> = ({ currentSection, setCurrentSection
 					<h2 className={classes(styles['content-heading'], styles['content-heading-skills'])}>
 						Skillsets
 					</h2>
-				</AnimatePresence>
+				</>
 			</HeadingTransition>
 
 			{/***************************** B O D Y *****************************/}

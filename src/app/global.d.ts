@@ -1,3 +1,8 @@
+import { type Dispatch, type SetStateAction } from "react";
+
+type ModalContextState = boolean;
+type ModalContextStateSetter = Dispatch<SetStateAction<boolean>>;
+
 export declare global {
 	type AboutSection = 'about' | 'skills';
 
@@ -5,6 +10,8 @@ export declare global {
 	type ExcludeKeys<T, Key extends keyof T> = Pick<T, Exclude<keyof T, Key>>
 
 	type MailStatus = 'success' | 'failed' | null;
+
+	type ModalContextType = [ModalContextState, ModalContextStateSetter];
 
 	type Project = {
 		id: number,
