@@ -5,14 +5,14 @@ import { slideUpVariant } from "@/app/helpers/animation-variants";
 
 interface ProjectGalleryControlsProps {
 	contentDelay: number,
-	galleryXPosition: number,
+	currentSlideIndex: number,
 	imageWidthPercentage: number,
-	maxXPosition: number,
+	maxSlideIndex: number
 	onPrevious: () => void,
 	onNext: () => void,
 }
 
-const ProjectGalleryControls: React.FC<ProjectGalleryControlsProps> = ({ contentDelay, galleryXPosition, imageWidthPercentage, maxXPosition, onPrevious, onNext }) => {
+const ProjectGalleryControls: React.FC<ProjectGalleryControlsProps> = ({ contentDelay, currentSlideIndex, maxSlideIndex, onPrevious, onNext }) => {
 	const slideUpTransition = {
 		delay: contentDelay + 0.7,
 		y: { delay: contentDelay + 0.45, duration: 0.13, type: 'spring', damping: 12 }
@@ -29,7 +29,7 @@ const ProjectGalleryControls: React.FC<ProjectGalleryControlsProps> = ({ content
 			<button
 				aria-label="Scroll to previous image"
 				className={styles['arrow-button']}
-				disabled={galleryXPosition === 0}
+				disabled={currentSlideIndex === 0}
 				onClick={onPrevious}
 				style={{ width: '50%'}}
 			>
@@ -40,7 +40,7 @@ const ProjectGalleryControls: React.FC<ProjectGalleryControlsProps> = ({ content
 			<button
 				aria-label="Scroll to next image"
 				className={styles['arrow-button']}
-				disabled={(galleryXPosition + imageWidthPercentage) >= maxXPosition}
+				disabled={currentSlideIndex >= maxSlideIndex}
 				onClick={onNext}
 			>
 				<div className={styles['arrow-icon-container']}>

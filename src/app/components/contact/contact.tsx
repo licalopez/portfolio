@@ -10,7 +10,7 @@ interface ContactProps {
 	ref: LegacyRef<HTMLElement>,
 }
 
-const Contact: React.FC<ContactProps> = forwardRef(({ }, ref) => {
+const Contact: React.FC<ContactProps> = forwardRef(({}, ref) => {
 	const [mailStatus, setMailStatus] = useState<MailStatus>(null);
 
 	return (

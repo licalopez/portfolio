@@ -1,5 +1,5 @@
 "use client"
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
 import { notFound } from "next/navigation";
 
@@ -11,6 +11,7 @@ import ProjectHeader from "../components/project-page/project-header";
 import ProjectGallery from "../components/project-page/project-gallery";
 // import PageTransition from "../components/page-transition";
 import { useModalContext } from "../hooks/useModalContext";
+import { SCREEN } from "../data/screenSizes";
 
 interface ProjectPageProps {
 	params: { projectLabel: string },
@@ -22,26 +23,57 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 	if (!project) notFound();
 
 	const { id: projectId, name, description, filters, images, launchedSite, repoLink } = project;
-
+	const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 	const [galleryXPosition, setGalleryXPosition] = useState(0);
+	const [imagesPerSlide, setImagesPerSlide] = useState(1);
+	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 	const [isMenuModalOpen] = useModalContext();
 
 	// Duration of container animations before text content starts transitioning in
 	// Decided to omit container animations, but might add them in the future
 	const contentDelay: number = 0.1;
-	const imageWidthPercentage = 50;
-	const maxXPosition = (images.length - 1) * imageWidthPercentage;
+
+	// So that window resize reflects the proper imagesPerSlide and galleryXPosition
+	useEffect(() => {
+		function captureWindowWidth() {
+			setWindowWidth(window.innerWidth);
+		};
+
+		window.addEventListener('resize', captureWindowWidth);
+		return () => window.removeEventListener('resize', captureWindowWidth);
+	}, []);
+
+	useEffect(() => {
+		windowWidth >= SCREEN.at2XLarge ? setImagesPerSlide(3) :
+		windowWidth >= SCREEN.atSmall ? setImagesPerSlide(2) :
+		setImagesPerSlide(1);
+	}, [windowWidth]);
+
+	const maxSlideIndex: number = useMemo(() => {
+		return images.length - imagesPerSlide;
+	}, [images.length, imagesPerSlide]);
+
+	// Adjust gallery X position when imagesPerSlide changes (i.e. when window resizes)
+	useEffect(() => {
+		setGalleryXPosition(currentSlideIndex * (100 / imagesPerSlide));
+	}, [currentSlideIndex, imagesPerSlide]);
+
+	// If currentIndex is greater than maxSlideIndex (e.g. when screen changes and maxSlideIndex decreases), make currentIndex the last slide
+	useEffect(() => {
+		if (currentSlideIndex > maxSlideIndex)
+			setCurrentSlideIndex(maxSlideIndex);
+	}, [currentSlideIndex, maxSlideIndex, imagesPerSlide]);
 
 	const onNext = () => {
-		if (galleryXPosition + imageWidthPercentage >= maxXPosition)
+		if (currentSlideIndex >= maxSlideIndex)
 			return;
-		setGalleryXPosition(prev => prev + imageWidthPercentage)
+		setCurrentSlideIndex(prev => prev + 1);
 	}
 
 	const onPrevious = () => {
-		if (galleryXPosition === 0)
+		if (currentSlideIndex === 0)
 			return;
-		setGalleryXPosition(prev => prev - imageWidthPercentage);
+		setCurrentSlideIndex(prev => prev - 1);
 	}
 
 	return (
@@ -58,9 +90,9 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 
 				<ProjectGalleryControls
 					contentDelay={contentDelay}
-					galleryXPosition={galleryXPosition}
-					imageWidthPercentage={imageWidthPercentage}
-					maxXPosition={maxXPosition}
+					currentSlideIndex={currentSlideIndex}
+					imageWidthPercentage={100 / imagesPerSlide}
+					maxSlideIndex={maxSlideIndex}
 					onPrevious={onPrevious}
 					onNext={onNext}
 				/>
@@ -70,9 +102,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 			<div className={styles['gallery-container']}>
 				<ProjectGallery
 					contentDelay={contentDelay}
+					currentSlideIndex={currentSlideIndex}
 					galleryXPosition={galleryXPosition}
 					images={images}
-					imageWidthPercentage={imageWidthPercentage}
+					imageWidthPercentage={100 / imagesPerSlide}
+					imagesPerSlide={imagesPerSlide}
 					projectId={projectId}
 				/>
 			</div>

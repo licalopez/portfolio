@@ -103,9 +103,12 @@
 	display: flex;
 	flex-direction: column;
 	font-family: font.$wide;
-	gap: 4.5rem;
+	gap: 3rem;
 	justify-content: flex-start;
 
+	@include screen.atXSmall {
+		gap: 4rem;
+	}
 	@include screen.atSmall {
 		flex-direction: row;
 	}
@@ -118,8 +121,11 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1.1rem;
-	width: 80%;
+	width: 90%;
 
+	@include screen.atXSmall {
+		width: 80%;
+	}
 	@include screen.atSmall {
 		width: 60%;
 	}
@@ -144,8 +150,11 @@
 	display: flex;
 	flex-direction: column;
 	gap: 1.1rem;
-	width: 50%;
+	width: 70%;
 
+	@include screen.atXSmall {
+		width: 50%;
+	}
 	@include screen.atSmall {
 		width: 25%;
 	}
@@ -174,17 +183,21 @@
 	background-color: color.$light;
 	height: auto;
 	overflow: hidden;
-	padding: 0;
+	padding: 1.25rem;					// correlate with .image-container's padding-right
+	padding-right: 0;
 	width: 100%;
 
-	@include screen.atSmall {
-		min-height: 40vh;
+	@include screen.atXSmall {
+		padding: 2rem;					// correlate with .image-container's padding-right
 	}
 	@include screen.atSmall {
-		padding: 0 1.5rem;		// if we want padding around each image
+		padding: 1.5rem;				// correlate with .image-container's padding-right
+		padding-right: 0;
+		// min-height: 40vh;
 	}
 	@include screen.atMedium {
-		padding: 0 size.$menu-border-size size.$menu-border-size;
+		min-height: 40vh;
+		// padding: 0 size.$menu-border-size size.$menu-border-size;
 		padding: 0 size.$menu-border-size+0.75rem size.$menu-border-size size.$menu-border-size+0.75rem;    // if we want padding around each image
 	}
 }
@@ -192,9 +205,9 @@
 .gallery-scrollable {
 	display: flex;
 	flex: 1;
-	flex-direction: column;
+	flex-direction: row;
 	height: 100%;
-	transition: transform 250ms transition.$transition-timing 50ms;
+	transition: transform 250ms transition.$transition-timing 5ms;
 
 	@include screen.atSmall {
 		flex-direction: row;
@@ -204,11 +217,18 @@
 .image-container {
 	flex-shrink: 0;
 	height: 100%;
-	padding: 1.5rem 0.75rem;   // if we want padding around each image
+	padding-right: 1.25rem;			// correlate with .gallery-container's padding
 	width: 100%;
 
+	@include screen.atXSmall {
+		padding-right: 2rem;			// correlate with .gallery-container's padding
+	}
 	@include screen.atSmall {
+		padding-right: 1.5rem;		// correlate with .gallery-container's padding
 		width: 50%;
+	}
+	@include screen.atMedium {
+		padding: 1.5rem 0.75rem;	// if we want padding around each image
 	}
 	@include screen.at2XLarge {
 		width: 33.3333%;
