@@ -15,11 +15,14 @@
 }
 
 .menu-icon-button {
-	background-color: transparent;
+	// background-color: transparent;
 	transform: rotate(0deg);
 	transition: transition.$transition,
 							background-color 0ms;
 
+	@include screen.atXSmall {
+		background-color: transparent;
+	}
 	@include screen.atMedium {
 		left: 2.5rem;
 	}
@@ -87,10 +90,16 @@
 	position: absolute;
 	right: 0;
 	top: 0;
-	transform: scale(65%);
+	transform: scale(43%);
 	transform-origin: right top;
 	// width: 60vw;
 
+	@include screen.atXSmall {
+		transform: scale(50%);
+	}
+	@include screen.atSmall {
+		transform: scale(65%);
+	}
 	@include screen.atLarge {
 		transform: scale(80%);
 	}
@@ -99,13 +108,23 @@
 .headphones {
 	bottom: 0;
 	position: absolute;
-	right: -15%;
+	right: -60%;
+	transform: scale(65%);
 	transform-origin: bottom right;
 	// width: 140vw;
 
+	@include screen.atXSmall {
+		right: -40%;
+		transform: scale(80%);
+	}
+	@include screen.atSmall {
+		right: -20%;
+	}
+	@include screen.atMedium {
+		right: -15%;
+	}
 	@include screen.atLarge {
 		// left: -5%;
-		right: -15%;
 		transform: scale(105%);
 		// width: 100vw;
 	}
@@ -123,7 +142,7 @@
 	font-family: font.$heading;
 	font-size: 1.9rem;
 	font-weight: 900;
-	left: 50%;
+	// left: 50%;
 	letter-spacing: 0.2rem;
 	list-style: none;
 	margin-block-start: 0;
@@ -132,13 +151,16 @@
 	padding-inline-start: 0;
 	position: absolute;
 	text-transform: uppercase;
-	top: 50%;
+	top: 53%;
 	transform: translate(-50%, -50%);
 	width: size.$modal-content-width-default;
+	left: 60%;
 	z-index: 1;
 
 	@include screen.atXSmall {
 		font-size: 2.25rem;
+		left: 50%;
+		top: 50%;
 		width: size.$modal-content-width-xs;
 	}
 	@include screen.atSmall {
@@ -196,18 +218,13 @@
 
 // S O C I A L   I C O N S
 .icons-container-modal {
-	height: 100vh;
+	height: 95vh;
 	position: relative;
-	width: 100%;
 	z-index: 0;   // don't let container obstruct nav links
+	width: 75vw;
+
+	@include screen.atXSmall {
+		height: 100vh;
+		width: 100%;
+	}
 }
-
-/*
-create file for Chrsitine, 2022
-	copy address, bday, SIN in 2022 then carry forward to 2023 and to CRA auth *there* (business and group #, no repId)
-carry it forward to 2023
-do CRA authorization for 2023
-
-when Auth works, do AFR for 2022 and 2023
-download slips from both years
-*/

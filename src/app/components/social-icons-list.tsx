@@ -11,12 +11,12 @@ interface SocialIconsListProps {
 	context?: 'footer' | 'menu' | 'modal'
 }
 
-type Icon = { label: 'linkedin' | 'github' | 'twitter', url: string, };
+type Icon = { label: 'LinkedIn' | 'GitHub' | 'Twitter', url: string, };
 
 const ICONS: Icon[] = [
-	{ label: 'linkedin', url: 'https://www.linkedin.com/in/angelica-lopez-1a6775125/' },
-	{ label: 'github', url: 'https://github.com/licalopez' },
-	{ label: 'twitter', url: 'https://twitter.com/llicalopez' }
+	{ label: 'LinkedIn', url: 'https://www.linkedin.com/in/angelica-lopez-1a6775125/' },
+	{ label: 'GitHub', url: 'https://github.com/licalopez' },
+	{ label: 'Twitter', url: 'https://twitter.com/llicalopez' }
 ];
 
 
@@ -40,8 +40,9 @@ const SocialIconsList: React.FC<SocialIconsListProps> = ({ context = 'menu' }) =
 					className={classes(styles.icon, context === 'footer' ? styles['icon-footer'] : '')}
 				>
 					<a
-						href={icon.url}
 						key={`${context}-${icon.label}-link`}
+						href={icon.url}
+						aria-label={`View my ${icon.label} page`}
 						rel="noopener noreferrer"
 						target="_blank"
 						className={classes(
@@ -50,14 +51,14 @@ const SocialIconsList: React.FC<SocialIconsListProps> = ({ context = 'menu' }) =
 						)}
 						tabIndex={isMenuModalOpen && context !== 'modal' ? -1 : 1}
 					>
-						{icon.label === 'linkedin'
+						{icon.label === 'LinkedIn'
 							? <LinkedInIcon className={classes(
 									styles.svg,
 									styles['svg-linkedin'],
 									context === 'modal' ? styles['svg-modal'] : '',
 									context === 'footer' ? styles['svg-footer'] : '',
 								)}/>
-						: icon.label === 'github'
+						: icon.label === 'GitHub'
 							? <GithubIcon className={classes(
 								styles.svg,
 								context === 'footer' ? styles['svg-footer'] : '',
