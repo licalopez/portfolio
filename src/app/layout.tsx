@@ -5,7 +5,10 @@ import ModalProvider from "./contexts/modal-context";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "Angelica Lopez",
+  title: {
+    default: "Angelica Lopez",
+    template: "Angelica Lopez | %s",
+  },
   description: "Angelica Lopez\'s web portfolio",
   icons: "/favicon.ico",
 };

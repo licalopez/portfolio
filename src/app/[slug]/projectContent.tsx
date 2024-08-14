@@ -1,37 +1,34 @@
-"use client"
+"use client";
 import { useEffect, useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { notFound } from "next/navigation";
-
-import { PROJECTS } from "../data/projects";
-import styles from "@/app/styles/modules/project-page/project-page.module.scss";
-
-import ProjectGalleryControls from "../components/project-page/project-gallery-controls";
-import ProjectHeader from "../components/project-page/project-header";
-import ProjectGallery from "../components/project-page/project-gallery";
-// import PageTransition from "../components/page-transition";
 import { useModalContext } from "../hooks/useModalContext";
 import { SCREEN } from "../data/screenSizes";
 
-interface ProjectPageProps {
-	params: { projectLabel: string },
+// import PageTransition from "../components/page-transition";
+import ProjectGallery from "../components/project-page/project-gallery";
+import ProjectGalleryControls from "../components/project-page/project-gallery-controls";
+import ProjectHeader from "../components/project-page/project-header";
+import styles from "@/app/styles/modules/project-page/project-page.module.scss";
+
+
+interface ProjectContentProps {
+	project: Project
 }
 
-
-const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) => {
-	const [project] = PROJECTS.filter(project => project.path === projectLabel);
-	if (!project) notFound();
-
-	const { id: projectId, name, description, filters, images, launchedSite, repoLink } = project;
+const ProjectContent: React.FC<ProjectContentProps> = ({ project }) => {
 	const [currentSlideIndex, setCurrentSlideIndex] = useState(0);
 	const [galleryXPosition, setGalleryXPosition] = useState(0);
 	const [imagesPerSlide, setImagesPerSlide] = useState(1);
-	const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+	const [windowWidth, setWindowWidth] = useState(0);
 	const [isMenuModalOpen] = useModalContext();
 
 	// Duration of container animations before text content starts transitioning in
 	// Decided to omit container animations, but might add them in the future
 	const contentDelay: number = 0.1;
+
+	useEffect(() => {
+		setWindowWidth(window.innerWidth);
+	}, []);
 
 	// So that window resize reflects the proper imagesPerSlide and galleryXPosition
 	useEffect(() => {
@@ -50,8 +47,8 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 	}, [windowWidth]);
 
 	const maxSlideIndex: number = useMemo(() => {
-		return images.length - imagesPerSlide;
-	}, [images.length, imagesPerSlide]);
+		return project.images.length - imagesPerSlide;
+	}, [project.images.length, imagesPerSlide]);
 
 	// Adjust gallery X position when imagesPerSlide changes (i.e. when window resizes)
 	useEffect(() => {
@@ -81,11 +78,11 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 			<header className={styles['header']}>
 				<ProjectHeader
 					contentDelay={contentDelay}
-					description={description}
-					filters={filters}
-					launchedSite={launchedSite}
-					name={name}
-					repoLink={repoLink}
+					description={project.description}
+					filters={project.filters}
+					launchedSite={project.launchedSite}
+					name={project.name}
+					repoLink={project.repoLink}
 				/>
 
 				<ProjectGalleryControls
@@ -104,14 +101,14 @@ const ProjectPage: React.FC<ProjectPageProps> = ({ params: { projectLabel } }) =
 					contentDelay={contentDelay}
 					currentSlideIndex={currentSlideIndex}
 					galleryXPosition={galleryXPosition}
-					images={images}
+					images={project.images}
 					imageWidthPercentage={100 / imagesPerSlide}
 					imagesPerSlide={imagesPerSlide}
-					projectId={projectId}
+					projectId={project.id}
 				/>
 			</div>
 		</motion.div>
 	);
 }
 
-export default ProjectPage
+export default ProjectContent;

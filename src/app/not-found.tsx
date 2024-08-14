@@ -1,9 +1,13 @@
-import styles from "@/app/styles/modules/not-found.module.scss";
+import { Metadata } from "next";
 import Link from "next/link";
+import styles from "@/app/styles/modules/not-found.module.scss";
 
-interface NotFoundProps {
+export const metadata: Metadata = {
+  title: "404",
+	description: "Page not found",
+};
 
-}
+interface NotFoundProps {}
 
 const NotFound: React.FC<NotFoundProps> = () => {
 	return (

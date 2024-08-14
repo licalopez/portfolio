@@ -8,6 +8,7 @@ import Projects from './components/projects/projects';
 import Contact from "./components/contact/contact";
 import Footer from "./components/footer";
 
+
 export default function Home() {
   const contactRef = useRef<HTMLDivElement | null>(null);
   const [isMenuModalOpen] = useModalContext();

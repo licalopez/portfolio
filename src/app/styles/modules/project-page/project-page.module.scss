@@ -189,6 +189,7 @@
 
 	@include screen.atXSmall {
 		padding: 2rem;					// correlate with .image-container's padding-right
+		padding-right: 0;
 	}
 	@include screen.atSmall {
 		padding: 1.5rem;				// correlate with .image-container's padding-right

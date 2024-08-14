@@ -1,3 +1,5 @@
+// Correlate with @/src/app/data/screenSizes.ts
+
 @mixin atXSmall {
 	@media only screen and (min-width: 429px) {
 		@content;
