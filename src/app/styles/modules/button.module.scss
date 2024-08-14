@@ -58,20 +58,20 @@
 	&:focus {
 		@include btn-focus.focus(color.$light, color.$salmon);
 	}
-}
 
-.disabled {
-	background-color: transparent;
-	border: 1px solid #9c9c9c;
-	color: #9c9c9c;
-	cursor: default;
-
-	&:hover {
-		color: #9c9c9c;
-	}
-
-	&::before {
+	&:disabled {
 		background-color: transparent;
+		border: 1px solid #9c9c9c;
+		color: #9c9c9c;
+		cursor: not-allowed;
+
+		&:hover {
+			color: #9c9c9c;
+		}
+
+		&::before {
+			background-color: transparent;
+		}
 	}
 }
 

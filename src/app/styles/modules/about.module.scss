@@ -9,43 +9,49 @@
 /*******************************/
 .about {
 	background-color: color.$tan;
-	overflow-y: hidden;								// hide bg illustrations when we nudge them down to make content more legible
-	padding-bottom: 16rem;						// make room for bg illustrations
-	position: relative;
 	height: auto;
+	overflow-y: hidden;								// hide bg illustrations when we nudge them down to make content more legible
+	padding-bottom: 5.75rem;						// make room for bg illustrations
+	position: relative;
 	transition: all 200ms transition.$transition-timing 50ms;
+
+	@include screen.atXSmall {
+		padding-bottom: 8rem;
+	}
+	@include screen.atSmall {
+		padding-bottom: 12rem;
+	}
+	@include screen.atMedium {
+		padding-bottom: 16rem;
+	}
 }
 
 .header {
+	aspect-ratio: 1024/560;
 	position: relative;
-	transform: translateY(-0.15%); 		// trim dark line at the top of image
-	height: 41.875rem;
+	width: 100%;
 
 	@include screen.atXSmall {
-		height: 21.5rem;
+		aspect-ratio: 1024/550;
 	}
 	@include screen.atSmall {
-		height: 25.5rem;
+		aspect-ratio: 1024/540;
 	}
 	@include screen.atMedium {
-		height: 35rem;
-	}
-	@include screen.atLarge {
-		height: 41.875rem;
+		aspect-ratio: 1024/520;
 	}
 	@include screen.atXLarge {
-		height: 50rem;
+		aspect-ratio: 1024/500;
 	}
 	@include screen.at2XLarge {
-		height: 54.5rem;
-	}
-	@include screen.at3XLarge {
-		height: 57rem;
+		aspect-ratio: 1024/480;
 	}
 }
 
 .header-img-container {
+	height: 100%;
 	position: absolute;
+	width: 100%;
 }
 
 .header-img {
@@ -57,21 +63,31 @@
 .body-container {
 	height: auto;
 	max-height: 48rem;
-	transition: height 200ms transition.$transition-timing 50ms;
+	transition: all 200ms transition.$transition-timing 50ms;
 
+	@include screen.atXSmall {
+		height: 40rem;
+	}
+	@include screen.atSmall {
+		height: 44.5rem;
+	}
 	@include screen.atMedium {
-		max-height: 46.25rem;
+		height: 47.5rem;
 	}
 }
 
 .content-container {
 	background-color: color.$brown;
 	margin: -0rem auto;
-	padding: 2rem 2.5rem;
+	padding: 0.5rem 1.25rem;
 	position: relative;
 	max-width: none;
-	width: 85%;
+	width: 90%;
 
+	@include screen.atSmall {
+		padding: 2rem 2.5rem;
+		width: 85%;
+	}
 	@include screen.atMedium {
 		padding: 2.25rem 3.5rem;
 		width: 75%;
@@ -87,40 +103,44 @@
 	align-items: center;
 	display: flex;
 	justify-content: space-between;
-	position: absolute;
-	top: -3.2rem;
 	left: 1rem;
+	position: absolute;
 	right: 1rem;
+	top: -2.45rem;
 
+	@include screen.atXSmall {
+		top: -3.2rem;
+	}
 	@include screen.atSmall {
-		top: -4.95rem;
+		flex-direction: row;
+		top: -4.7rem;
 	}
 	@include screen.atMedium {
 		left: 2rem;
 		right: 2rem;
-		top: -5.7rem;
+		top: -5.4rem;
 	}
 	@include screen.atLarge {
-		top: -5.65rem;
+		top: -5.95rem;
 	}
 }
 
 .content-heading {
 	color: color.$brown;
 	font-family: font.$wide;
-	font-size: 3.5rem;
+	font-size: 2.65rem;
 	font-weight: 800;
 
+	@include screen.atXSmall {
+		font-size: 3.5rem;
+	}
 	@include screen.atSmall {
 		font-size: 5.2rem;
-		// font-size: 5.5rem;
 	}
 	@include screen.atMedium {
-		// font-size: 5.94rem;
 		font-size: 6.05rem;
 	}
 	@include screen.atLarge {
-		// font-size: 6.5rem;
 		font-size: 6.75rem;
 	}
 }
@@ -131,9 +151,17 @@
 .content-text {
 	color: color.$light;
 	font-family: font.$wide;
-	font-size: 0.95rem;
-	line-height: 2.16;
+	font-size: 0.75rem;
+	line-height: 1.85;
 
+	@include screen.atXSmall {
+		font-size: 0.8rem;
+		line-height: 2;
+	}
+	@include screen.atSmall {
+		font-size: 0.95rem;
+		line-height: 2.16;
+	}
 	@include screen.atMedium {
 		font-size: 1rem;
 		line-height: 2.25;
@@ -153,6 +181,14 @@
 	width: 100%;
 	border-bottom: 2px solid color.$aqua;
 
+	&:first-of-type {
+		padding-top: 1rem;
+
+		@include screen.atSmall {
+			padding-top: 0;
+		}
+	}
+
 	&:last-of-type {
 		border-bottom: none;
 	}
@@ -161,23 +197,42 @@
 .label {
 	border-right: 2px solid color.$aqua;
 	flex: 1;
-	padding: 1.5rem 2rem;
-}
+	max-width: 50%;
+	padding: 1rem 0.35rem;
 
-.first-row {
-	padding-top: 3rem;
+	@include screen.atXSmall {
+		padding: 1.25rem;
+	}
+	@include screen.atSmall {
+		padding: 1.5rem 2rem;
+	}
 }
 
 .label-text {
 	color: color.$aqua;
 	font-family: font.$heading;
-	font-size: 1.1rem;
-	letter-spacing: 0.25rem;
+	font-size: 0.75rem;
+	letter-spacing: 0.05rem;
+
+	@include screen.atXSmall {
+		font-size: 0.9rem;
+	}
+	@include screen.atSmall {
+		font-size: 0.95rem;
+		letter-spacing: 0.25rem;
+	}
+	@include screen.atMedium {
+		font-size: 1.1rem;
+	}
 }
 
 .graph {
-	padding: 0 2.5rem;
+	padding: 0 0.35rem 0 0.85rem;
 	width: 50%;
+
+	@include screen.atSmall {
+		padding: 0 2.5rem;
+	}
 }
 
 /********************************
@@ -187,23 +242,33 @@
 	bottom: 0;
 	display: flex;
 	justify-content: space-between;
+	overflow: hidden;
 	position: absolute;
 	width: 100%;
 }
 
 .left-container,
 .right-container {
-	bottom: -0.25rem;
+	// bottom: -0.25rem;
 	position: relative;
 	z-index: 2;
 }
 
 .left-container {
-	left: -0.125rem;
+	bottom: -0.25rem;
+	left: -2.45rem;
 	max-width: 50.25rem;
 	width: 49vw;
 
+	@include screen.atXSmall {
+		left: -3.85rem;
+		width: 45vw;
+	}
+	@include screen.atSmall {
+		left: -5rem;
+	}
 	@include screen.atMedium {
+		left: -0.125rem;
 		width: 48vw;
 	}
 	@include screen.atLarge {
@@ -215,12 +280,21 @@
 }
 
 .right-container {
+	bottom: -0.4rem;
 	margin-top: auto;
 	max-width: 43.25rem;
-	right: 0;
+	right: -1.25rem;
 	width: 46vw;
 
+	@include screen.atXSmall {
+		right: -2.5rem;
+	}
+	@include screen.atSmall {
+		bottom: -0.55rem;
+		right: -3rem;
+	}
 	@include screen.atMedium {
+		right: 0;
 		width: 45vw;
 	}
 	@include screen.atLarge {

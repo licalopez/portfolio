@@ -49,7 +49,6 @@ const SocialIconsList: React.FC<SocialIconsListProps> = ({ context = 'menu' }) =
 							context === 'modal' ? styles['link-modal'] : ''
 						)}
 						tabIndex={isMenuModalOpen && context !== 'modal' ? -1 : 1}
-						// tabIndex={context !== 'modal' && isMenuModalOpen ? -1 : 1}
 					>
 						{icon.label === 'linkedin'
 							? <LinkedInIcon className={classes(

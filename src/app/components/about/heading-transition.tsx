@@ -13,7 +13,7 @@ const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 			opacity: 1, y: 0,
 			transition: {
 				opacity: { delay: 0.85, duration: 0.07 },
-				y: { delay: 0.8, duration: 0.09, type: 'spring', damping: 12 },
+				y: { delay: 0.8, duration: 0.08, type: 'spring', damping: 12 },
 				delayChildren: 0.98,
 				staggerChildren: 0.1
 			},
@@ -21,8 +21,8 @@ const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 		exit: {
 			opacity: 0, y: '2.5rem',
 			transition: {
-				opacity: { delay: 0.1, duration: 0.07 },
-				y: { delay: 0.03, duration: 0.09, type: 'spring' },
+				opacity: { delay: 0, duration: 0.07 },
+				y: { delay: 0, duration: 0.08, type: 'spring' },
 				delayChildren: 0.98,
 				staggerChildren: 0.1
 			}
@@ -34,7 +34,7 @@ const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 			className={styles['content-heading-container']}
 			variants={headingVariant}
 			viewport={{
-				margin: '-170px',
+				margin: '-130px',
 				once: true
 			}}
 			initial="initial"

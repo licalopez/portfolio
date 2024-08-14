@@ -8,10 +8,6 @@ import Projects from './components/projects/projects';
 import Contact from "./components/contact/contact";
 import Footer from "./components/footer";
 
-
-/**
- * TODO : isMenuModalOpen to adjust tabIndex of links/buttons in page components
- */
 export default function Home() {
   const contactRef = useRef<HTMLDivElement | null>(null);
   const [isMenuModalOpen] = useModalContext();

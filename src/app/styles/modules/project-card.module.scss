@@ -4,29 +4,20 @@
 @use '../variables/transitions' as transition;
 
 .card-link {
-	aspect-ratio: 1000/772;
-	border: 0.625rem solid color.$aqua;
-	height: 100%;
-	max-width: 34.375rem;
+	aspect-ratio: 1000/770;
+	border: 0.4375rem solid color.$aqua;
+	height: auto;
 	transition: border 150ms transition.$transition-timing,
 							box-shadow 150ms transition.$transition-timing,
 							transform 200ms transition.$transition-timing;
-	width: 35%;
 
 	@include screen.atXSmall {
-		width: 46.75%;
-	}
-	@include screen.atSmall {
-		width: 48.1%;
-	}
-	@include screen.atLarge {
-		width: 32.2%;
+		border: 0.625rem solid color.$aqua;
 	}
 
 	&:hover,
 	&:focus,
 	&:focus-visible {
-		// border-color: color.$salmon;
 		box-shadow: 0 0 0 0.3125rem color.$light,
 								0 0 0 0.625rem color.$salmon;
 		outline: none;

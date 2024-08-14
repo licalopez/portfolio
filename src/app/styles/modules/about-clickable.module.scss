@@ -35,19 +35,20 @@
 	}
 
 	&.about-btn {
-		left: 2rem;							// offset 2rem padding
+		left: 2rem;
 		padding-left: 0.5rem;
 
 		@include screen.atSmall {
-			left: 2rem;
+			left: 3rem;
 		}
 	}
+
 	&.skills-btn {
 		padding-right: 0.5rem;
-		right: 2rem;						// offset 2rem padding
+		right: 2rem;
 
 		@include screen.atSmall {
-			right: 2rem;
+			right: 3rem;
 		}
 	}
 
@@ -57,30 +58,52 @@
 	}
 }
 
+.label {
+	display: none;
+
+	&.about-label {
+		margin-left: 0.5rem;
+
+		@include screen.atMedium {
+			margin-left: 0.75rem;
+		}
+	}
+
+	@include screen.atSmall {
+		display: inline-block;
+	}
+}
+
 .arrow {
 	animation-iteration-count: infinite;
 	animation-timing-function: transition.$transition-timing;
 	animation-duration: 3000ms;
-	color: color.$brown;
-	font-family: font.$wide;
-	font-size: 1rem;
+	display: inline-block;
+	fill: color.$brown;
 	position: relative;
-	top: 1px;
-
-	@include screen.atMedium {
-		font-size: 1.1rem;
-	}
-	@include screen.atLarge {
-		font-size: 1.3rem;
-	}
+	top: 0.13rem;
+	width: 1.5rem;
 
 	&.arrow-left {
 		animation-name: arrowLeft;
 		right: 0.19rem;
+		rotate: 180deg;
 	}
+
 	&.arrow-right {
 		animation-name: arrowRight;
 		left: 0.19rem;
+	}
+
+	@include screen.atSmall {
+		width: 0.85rem;
+	}
+	@include screen.atMedium {
+		width: 1.1rem;
+	}
+	@include screen.atLarge {
+		top: 0.2rem;
+		width: 1.25rem;
 	}
 }
 

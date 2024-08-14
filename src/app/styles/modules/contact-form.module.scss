@@ -147,6 +147,6 @@
 	}
 
 	&:focus {
-		@include btn-focus.focus(color.$salmon, color.$dark);
+		@include btn-focus.focus(color.$dark, color.$salmon);
 	}
 }

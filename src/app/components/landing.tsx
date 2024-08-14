@@ -94,10 +94,10 @@ const Landing: React.FC<LandingProps> = ({ scrollToContact }) => {
 						initial="initial"
 						whileInView="final"
 						transition={{
-							opacity: { delay: 0.3, duration: 0.2 },
-							y: { delay: 0.3, duration: 0.4, type: 'spring', damping: 12 },
+							opacity: { delay: 0.15, duration: 0.2 },
+							y: { delay: 0.15, duration: 0.4, type: 'spring', damping: 12 },
 						}}
-						viewport={{ margin: '-130px' }}
+						viewport={{ margin: '-100px', once: true }}
 					>
 						<p className={styles['sub-text']}>
 							I am an artist and <span className={styles['sub-text-span']}>full-stack web developer</span> residing in Alberta, Canada.

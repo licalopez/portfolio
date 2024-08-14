@@ -14,8 +14,8 @@ const Button: React.FC<ButtonProps> = ({ children, className, disabled, onClick,
 				className ? className : '',
 				styles.button,
 				variant === 'dark' ? styles['button-dark'] : '',
-				disabled ? styles.disabled : '',
 			)}
+			disabled={disabled}
 			{...(onClick && { onClick })}
 			{...props}
 		>

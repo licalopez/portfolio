@@ -8,6 +8,9 @@
 	max-width: 100%;
 	padding-right: 0rem;
 
+	@include screen.atXSmall {
+		padding-right: 0.25rem;
+	}
 	@include screen.atSmall {
 		padding-right: 1.35rem;
 	}
@@ -23,11 +26,15 @@
 	border: 3px solid color.$aqua;
 	border-radius: 100%;
 	flex-shrink: 0;
-	height: 1.15rem;
+	height: 1rem;
 	overflow: hidden;
 	position: relative;
-	width: 1.15rem;
+	width: 1rem;
 
+	@include screen.atXSmall {
+		height: 1.15rem;
+		width: 1.15rem;
+	}
 	@include screen.atSmall {
 		height: 1.75rem;
 		width: 1.75rem;
