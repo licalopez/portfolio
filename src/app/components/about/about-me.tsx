@@ -31,7 +31,7 @@ const AboutMe: React.FC<AboutMeProps> = ({ currentSection, setCurrentSection }) 
 			className={styles['content-container']}
 			variants={slideUpVariant}
 			viewport={{
-				margin: '-125px',
+				margin: '-70px',
 				once: true,
 			}}
 			initial="initial"

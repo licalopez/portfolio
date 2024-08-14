@@ -45,8 +45,6 @@ const About: React.FC<AboutProps> = () => {
 		setBgImgPosition(latest);
 	});
 
-	console.log(bgImgPosition);
-
 	return (
 		<section id="about" className={styles.about}>
 			<motion.div className={styles['header']}>

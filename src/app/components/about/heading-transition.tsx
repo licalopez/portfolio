@@ -34,7 +34,7 @@ const HeadingTransition: React.FC<HeadingTransitionProps> = ({ children }) => {
 			className={styles['content-heading-container']}
 			variants={headingVariant}
 			viewport={{
-				margin: '-130px',
+				margin: '-60px',
 				once: true
 			}}
 			initial="initial"

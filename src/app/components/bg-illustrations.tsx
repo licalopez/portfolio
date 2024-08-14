@@ -17,7 +17,7 @@ const BackgroundIllustrations: React.FC<BackgroundIllustrationsProps> = forwardR
 			ref={ref}
 			style={{
 				opacity: bgImgPosition * 1.55,
-				transform: `translateY(${(1 - bgImgPosition) * 70}%)`,
+				transform: `translateY(${(1 - bgImgPosition) * 50}%)`,
 			}}
 		>
 			<div className={styles['left-container']}>
