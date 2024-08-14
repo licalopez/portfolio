@@ -24,8 +24,6 @@ const BackgroundIllustrations: React.FC<BackgroundIllustrationsProps> = forwardR
 				<Image
 					alt="Illustration of a coffee cup, paint brushes and paint tubes"
 					className={styles['left-img']}
-					objectFit="contain"
-					objectPosition="bottom center"
 					src={bgLeft}
 					sizes="auto"
 					style={{ transform: `translateY(0%)` }}
@@ -37,8 +35,6 @@ const BackgroundIllustrations: React.FC<BackgroundIllustrationsProps> = forwardR
 				<Image
 					alt="Illustration of a camera and a computer keyboard"
 					className={styles['right-img']}
-					objectFit="contain"
-					objectPosition="bottom center"
 					src={bgRight}
 					sizes="auto"
 					style={{ transform: `translateY(0%)` }}

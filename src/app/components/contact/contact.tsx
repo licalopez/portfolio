@@ -39,8 +39,6 @@ const Contact: React.FC<ContactProps> = forwardRef(({}, ref) => {
 							: <ContactForm key="contact-form" mailStatus={mailStatus} setMailStatus={setMailStatus} />
 						}
 					</AnimatePresence>
-
-					{/* TODO: back to top waypoint */}
 				</div>
 			</div>
 		</section>

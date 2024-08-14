@@ -1,7 +1,7 @@
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { PROJECTS } from "../data/projects";
-import ProjectContent from "./projectContent";
+import ProjectContent from "./project-content";
 
 interface ProjectPageProps {
 	params: { slug: string },

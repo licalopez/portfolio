@@ -55,7 +55,6 @@ const ProjectGallery: React.FC<ProjectGalleryProps> = ({ contentDelay, currentSl
 							alt={image.alt}
 							className={styles['image']}
 							src={`/projects/project${projectId}/${image.fileName}-sm.png`}
-							objectFit="cover"
 							height={750}
 							width={1000}
 						/>

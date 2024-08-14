@@ -32,7 +32,7 @@ const formSchema = z.object({
 	message: z.string()
 });
 
-type FormValues = z.infer<typeof formSchema>;
+export type FormValues = z.infer<typeof formSchema>;
 
 
 /*********************************

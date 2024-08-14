@@ -15,7 +15,6 @@
 }
 
 .menu-icon-button {
-	// background-color: transparent;
 	transform: rotate(0deg);
 	transition: transition.$transition,
 							background-color 0ms;
@@ -142,7 +141,6 @@
 	font-family: font.$heading;
 	font-size: 1.9rem;
 	font-weight: 900;
-	// left: 50%;
 	letter-spacing: 0.2rem;
 	list-style: none;
 	margin-block-start: 0;
@@ -181,7 +179,6 @@
 }
 
 .nav-item {
-	// line-height: 2;
 	position: relative;
 }
 

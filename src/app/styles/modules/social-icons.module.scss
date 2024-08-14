@@ -13,7 +13,7 @@
 	list-style: none;
 	position: relative;
 	top: 50%;
-	z-index: 10;   // check this
+	z-index: 10;
 
 	@include screen.atMedium {
 		display: flex;
@@ -22,8 +22,6 @@
 	// when menu modal is closed
 	&-default {
 		flex-direction: column;
-		// position: fixed;
-		// right: 1px;
 		transform: translate(0, -50%);
 	}
 }
