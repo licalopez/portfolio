@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
-import { AnimatePresence, motion } from "framer-motion";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { motion } from "framer-motion";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 
@@ -32,7 +32,7 @@ const formSchema = z.object({
 	message: z.string()
 });
 
-export type FormValues = z.infer<typeof formSchema>;
+type FormValues = z.infer<typeof formSchema>;
 
 
 /*********************************
